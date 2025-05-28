@@ -1,0 +1,27 @@
+return {
+
+	{
+		"rmagatti/auto-session",
+		config = function()
+			vim.o.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions,blank"
+
+			require("auto-session").setup({
+				log_level = "info",
+				auto_restore = false,
+				auto_restore_last_session = false,
+				auto_save = true,
+				root_dir = vim.fn.stdpath("data") .. "/sessions/",
+			})
+		end,
+	},
+
+	{
+		"rmagatti/session-lens",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("session-lens").setup({
+				path_display = { "shorten" },
+			})
+		end,
+	},
+}

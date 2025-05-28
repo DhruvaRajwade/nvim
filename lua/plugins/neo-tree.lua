@@ -1,0 +1,31 @@
+return {
+  "nvim-neo-tree/neo-tree.nvim",
+  branch = "v3.x",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- optional
+    "MunifTanjim/nui.nvim",
+  },
+  lazy = false,
+  keys = {
+    {
+      "<leader>e",
+      "<cmd>Neotree toggle<cr>",
+      desc = "Toggle Neotree at CWD"
+    },
+    {
+      "<leader>E",
+      "<cmd>Neotree toggle dir=/<cr>",
+      desc = "Toggle Neotree at root directory"
+    },
+  },
+  opts = {
+    filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+        hide_gitignored = true,
+      },
+    },
+  },
+}
+
