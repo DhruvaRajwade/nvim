@@ -13,6 +13,7 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
+      --transparent_background = true,
       integrations = {
         aerial = true,
         alpha = true,
@@ -45,7 +46,7 @@ return {
         noice = true,
         notify = true,
         semantic_tokens = true,
-        snacks = true,
+        blink_cmp = true,
         telescope = true,
         treesitter = true,
         treesitter_context = true,
@@ -63,10 +64,8 @@ return {
         end,
       },
     },
-config = function()
-  vim.cmd.colorscheme "catppuccin"
-end
-},
-
-
+    config = function()
+      vim.cmd.colorscheme("catppuccin")
+    end,
+  },
 }
