@@ -12,10 +12,30 @@ vim.opt.termguicolors = true
 vim.notify = require("notify")
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "lazy",
-  callback = function()
-    vim.keymap.set("n", "<Esc>", "<cmd>q<CR>", { buffer = true, silent = true })
-  end,
+	pattern = "lazy",
+	callback = function()
+		vim.keymap.set("n", "<Esc>", "<cmd>q<CR>", { buffer = true, silent = true })
+	end,
 })
 
 vim.g.python3_host_prog = "/home/stormageddon/.pyenv/versions/neovim-env/bin/python"
+
+vim.lsp.config("pylsp", {
+	cmd = { "pylsp" },
+	filetypes = { "python" },
+	root_markers = { ".git" },
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = { enabled = false },
+				pyflakes = { enabled = false },
+				pylint = { enabled = false },
+				mccabe = { enabled = false },
+				black = { enabled = false },
+				yapf = { enabled = false },
+				isort = { enabled = false },
+				autopep8 = { enabled = false },
+			},
+		},
+	},
+})

@@ -1,7 +1,7 @@
-def is_prime(n):
+def is_prime(n: int):
     """
-    Checks if a given non-negative integer is a prime number.
-
+    # Checks if a given non-negative integer is a prime number.
+    #
     Args:
         n: The integer to check.
 

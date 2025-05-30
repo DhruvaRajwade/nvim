@@ -1,13 +1,13 @@
 local map = vim.keymap.set
 
 --yanky
-vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+map({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+map({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
-vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
-vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+map("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+map("n", "<c-n>", "<Plug>(YankyNextEntry)")
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -73,16 +73,16 @@ map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 map("n", "<leader>zz", "<cmd>ZenMode<CR>", { desc = "Toggle ZenMode" })
 
 -- Terminal keymaps
-vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle Terminal" })
-vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle Floating Terminal" })
-vim.keymap.set("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "Toggle Horizontal Terminal" })
-vim.keymap.set("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Toggle Vertical Terminal" })
+map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle Terminal" })
+map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle Floating Terminal" })
+map("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "Toggle Horizontal Terminal" })
+map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Toggle Vertical Terminal" })
 
 -- Terminal mode resizing
-vim.keymap.set("t", "<C-Up>", "<C-\\><C-n>:resize -2<CR>i", { desc = "Resize window up" })
-vim.keymap.set("t", "<C-Down>", "<C-\\><C-n>:resize +2<CR>i", { desc = "Resize window down" })
-vim.keymap.set("t", "<C-Left>", "<C-\\><C-n>:vertical resize -2<CR>i", { desc = "Resize window left" })
-vim.keymap.set("t", "<C-Right>", "<C-\\><C-n>:vertical resize +2<CR>i", { desc = "Resize window right" })
+map("t", "<C-Up>", "<C-\\><C-n>:resize -2<CR>i", { desc = "Resize window up" })
+map("t", "<C-Down>", "<C-\\><C-n>:resize +2<CR>i", { desc = "Resize window down" })
+map("t", "<C-Left>", "<C-\\><C-n>:vertical resize -2<CR>i", { desc = "Resize window left" })
+map("t", "<C-Right>", "<C-\\><C-n>:vertical resize +2<CR>i", { desc = "Resize window right" })
 
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 
@@ -118,8 +118,8 @@ end
 map("n", "<leader>dt", toggle_virtual_text, { desc = "Toggle diagnostic virtual text" })
 
 --Go up or down half a page and center your screen (zz)
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+map("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+map("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 
 -- Github stuff (Gitsigns and Fugitive)
 
@@ -127,3 +127,7 @@ map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
 map("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", {})
 --Undotree toggle
 map("n", "<leader><F5>", vim.cmd.UndotreeToggle)
+
+map("n", "K", vim.lsp.buf.hover, {})
+map("n", "gd", vim.lsp.buf.definition, {})
+map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
