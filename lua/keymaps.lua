@@ -61,13 +61,10 @@ map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
 map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
 
--- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
-
 -- windows
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+map("n", "<leader>dw", "<C-W>c", { desc = "Delete Window", remap = true })
 
 --zen mode
 map("n", "<leader>zz", "<cmd>ZenMode<CR>", { desc = "Toggle ZenMode" })
@@ -86,7 +83,7 @@ map("t", "<C-Right>", "<C-\\><C-n>:vertical resize +2<CR>i", { desc = "Resize wi
 
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 
-map("n", "<leader>tn", function()
+map("n", "<leader>ln", function()
 	vim.wo.number = not vim.wo.number
 	vim.wo.relativenumber = not vim.wo.relativenumber
 end, { desc = "Toggle Line Numbers" })
@@ -115,7 +112,7 @@ function _G.toggle_virtual_text()
 	print("Virtual text: " .. (virtual_text_enabled and "ON" or "OFF"))
 end
 
-map("n", "<leader>dt", toggle_virtual_text, { desc = "Toggle diagnostic virtual text" })
+map("n", "<leader>ld", toggle_virtual_text, { desc = "Toggle diagnostic virtual text" })
 
 --Go up or down half a page and center your screen (zz)
 map("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
@@ -131,3 +128,8 @@ map("n", "<leader><F5>", vim.cmd.UndotreeToggle)
 map("n", "K", vim.lsp.buf.hover, {})
 map("n", "gd", vim.lsp.buf.definition, {})
 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+
+--marks
+
+map("n", "<leader>m", "<cmd>Telescope marks<CR>", { desc = "Telescope marks" })
+map("n", "<leader>dm", ':delm! | delm A-Z0-9"<>[]`<CR>', { noremap = true, silent = true })

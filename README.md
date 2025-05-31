@@ -1,3 +1,31 @@
+<!--toc:start-->
+
+- [📝 Deez Nuts](#📝-deez-nuts)
+  - [📁 Directory Structure](#📁-directory-structure)
+    - [Yanky Keymaps](#yanky-keymaps)
+    - [Better Up/Down Movement](#better-updown-movement)
+    - [Window Navigation](#window-navigation)
+    - [Window Resizing](#window-resizing)
+    - [Move Lines](#move-lines)
+    - [Buffers](#buffers)
+    - [Search Enhancements (saner n/N)](#search-enhancements-saner-nn)
+    - [Undo Breakpoints](#undo-breakpoints)
+    - [Save](#save)
+    - [Commenting](#commenting)
+    - [Quit](#quit)
+    - [Window Management](#window-management)
+    - [Zen Mode](#zen-mode)
+    - [Terminal](#terminal)
+    - [Line Number Toggle](#line-number-toggle)
+    - [Clipboard Operations](#clipboard-operations)
+    - [Diagnostics](#diagnostics)
+      - [Notes about changes (with dates)](#notes-about-changes-with-dates)
+        - [30 May:](#30-may)
+      - [Notes for specific plugins](#notes-for-specific-plugins)
+      - [TODO](#todo)
+- [Learning vim: Notes](#learning-vim-notes) - [General Stuff](#general-stuff) - [Navigation](#navigation) - [Actions](#actions) - [Horizontal Motions](#horizontal-motions) - [Vertical Motions](#vertical-motions) - [Searching](#searching) - [Advanced Motions](#advanced-motions)
+<!--toc:end-->
+
 # 📝 Deez Nuts
 
 Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management. The configuration is modular and organized for clarity and scalability.
@@ -174,7 +202,10 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 
 #### Notes about changes (with dates)
 
-blah blah
+##### 30 May:
+
+- After playing around a lot, I have added [harpoon][./lua/plugins/harpoon.lua] and `marks.nvim` (in same the file) for better file navigation |
+- I have added [indent-blankline][./lua/plugins/indent-blankline.lua] to show indentation lines | And `nvim-ufo` for better code folding (both in the `indent-blankline.lua` file
 
 #### Notes for specific plugins
 
