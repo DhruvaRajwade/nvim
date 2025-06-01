@@ -1,7 +1,0 @@
-[tool.basedpyright]
-ignore = ["*"]
-#
-# [tool.ruff]
-# select = []
-# ignore = ["ALL"]
-

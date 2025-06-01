@@ -16,6 +16,8 @@ return {
 			},
 			config = function()
 				local wk = require("which-key")
+
+				-- Group labels for leader key mappings
 				wk.add({
 					{ "<leader>f", group = "file" },
 					{ "<leader>h", group = "Harpoon" },
@@ -26,18 +28,8 @@ return {
 					{ "<leader>t", group = "Terminal" },
 					{ "<leader>d", group = "Deleter Overlord" },
 					{ "<leader>z", group = "Zenmode" },
+					{ "<leader>u", group = "Debugging" },
 				})
-
-				require("which-key").setup({
-
-					plugins = {
-
-						marks = true,
-						registers = true,
-					},
-					triggers = { "<leader>" },
-				})
-				-- dofile(vim.g.base46_cache .. "whichkey")
 			end,
 		},
 	},

@@ -17,7 +17,6 @@ def is_prime(n: int):
     # Multiples of 2 and 3 are not prime
     if n % 2 == 0 or n % 3 == 0:
         return False
-
     i = 5
 
     while i * i <= n:
@@ -27,6 +26,19 @@ def is_prime(n: int):
     i += 6
 
     return True
+
+
+class ded:
+    def __init__(self, age):
+        self.age = age
+
+    def report_age(self):
+        print(self.age)
+
+
+class ded_2:
+    def __init__(self, ded2):
+        self.ded2 = ded2
 
 
 is_prime(5)

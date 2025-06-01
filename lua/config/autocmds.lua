@@ -69,3 +69,10 @@ autocmd("FileType", {
 		vim.opt_local.wrap = true
 	end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "lazy",
+	callback = function()
+		vim.keymap.set("n", "<Esc>", "<cmd>q<CR>", { buffer = true, silent = true })
+	end,
+})

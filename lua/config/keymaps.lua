@@ -104,12 +104,14 @@ map({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from system clipboard" }
 map({ "n", "v" }, "<leader>P", [["+P]], { desc = "Paste before from system clipboard" })
 
 --Toggle errors inline
-local virtual_text_enabled = false
+-- local virtual_text_enabled = false
 
 function _G.toggle_virtual_text()
-	virtual_text_enabled = not virtual_text_enabled
-	vim.diagnostic.config({ virtual_text = virtual_text_enabled })
-	print("Virtual text: " .. (virtual_text_enabled and "ON" or "OFF"))
+	-- virtual_text_enabled = not virtual_text_enabled
+	virtual_lines_enabled = not virtual_lines_enabled
+	-- vim.diagnostic.config({ virtual_text = virtual_text_enabled })
+	vim.diagnostic.config({ virtual_lines = virtual_lines_enabled })
+	print("Virtual text: " .. (virtual_lines_enabled and "ON" or "OFF"))
 end
 
 map("n", "<leader>ld", toggle_virtual_text, { desc = "Toggle diagnostic virtual text" })
@@ -133,3 +135,18 @@ map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 map("n", "<leader>m", "<cmd>Telescope marks<CR>", { desc = "Telescope marks" })
 map("n", "<leader>dm", ':delm! | delm A-Z0-9"<>[]`<CR>', { noremap = true, silent = true })
+
+--todo
+map("n", "]t", function()
+	require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+
+map("n", "[t", function()
+	require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+
+-- You can also specify a list of valid jump keywords
+
+map("n", "]t", function()
+	require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
+end, { desc = "Next error/warning todo comment" })

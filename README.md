@@ -53,7 +53,7 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 <details>
 <summary><strong>📜 A map of Keymaps</strong></summary>
 
-### Yanky Keymaps
+### 🔁 Yanky Keymaps
 
 | Keybinding | Mode(s) | Description          |
 | ---------- | ------- | -------------------- |
@@ -64,14 +64,14 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 | `<C-p>`    | n       | Yanky Previous Entry |
 | `<C-n>`    | n       | Yanky Next Entry     |
 
-### Better Up/Down Movement
+### ⬇️ Better Up/Down Movement
 
 | Keybinding    | Mode(s) | Description           |
 | ------------- | ------- | --------------------- |
 | `j`, `<Down>` | n, x    | Down (gj if no count) |
 | `k`, `<Up>`   | n, x    | Up (gk if no count)   |
 
-### Window Navigation
+### 🪟 Window Navigation
 
 | Keybinding | Mode | Description        |
 | ---------- | ---- | ------------------ |
@@ -80,108 +80,151 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 | `<C-k>`    | n    | Go to Upper Window |
 | `<C-l>`    | n    | Go to Right Window |
 
-### Window Resizing
+### 🪟 Window Resizing
 
-| Keybinding  | Mode | Description            |
-| ----------- | ---- | ---------------------- |
-| `<C-Up>`    | n    | Increase Window Height |
-| `<C-Down>`  | n    | Decrease Window Height |
-| `<C-Left>`  | n    | Decrease Window Width  |
-| `<C-Right>` | n    | Increase Window Width  |
+| Keybinding    | Mode | Description          |
+| ------------- | ---- | -------------------- |
+| `<C-Up>`      | n    | Increase Height      |
+| `<C-Down>`    | n    | Decrease Height      |
+| `<C-Left>`    | n    | Decrease Width       |
+| `<C-Right>`   | n    | Increase Width       |
+| `<C-Up/Down>` | t    | Resize from terminal |
 
-### Move Lines
+### 🔃 Move Lines
 
 | Keybinding | Mode(s) | Description |
 | ---------- | ------- | ----------- |
 | `<A-j>`    | n, i, v | Move Down   |
 | `<A-k>`    | n, i, v | Move Up     |
 
-### Buffers
+### 📁 Buffers
 
-| Keybinding   | Mode | Description            |
-| ------------ | ---- | ---------------------- |
-| `<S-h>`      | n    | Previous Buffer        |
-| `]b`         | n    | Next Buffer            |
-| `<leader>bb` | n    | Switch to Other Buffer |
-| `<leader>\`` | n    | Switch to Other Buffer |
+| Keybinding                 | Mode | Description            |
+| -------------------------- | ---- | ---------------------- |
+| `<S-h>`                    | n    | Previous Buffer        |
+| `]b`                       | n    | Next Buffer            |
+| `<leader>bb`, `<leader>\`` | n    | Switch to Other Buffer |
 
-### Search Enhancements (saner n/N)
+### 🔎 Search Enhancements
 
-| Keybinding | Mode(s) | Description            |
-| ---------- | ------- | ---------------------- |
-| `n`        | n, x, o | Next Search Result     |
-| `N`        | n, x, o | Previous Search Result |
+| Keybinding | Mode(s) | Description              |
+| ---------- | ------- | ------------------------ |
+| `n`, `N`   | n, x, o | Smarter next/prev result |
 
-### Undo Breakpoints
+### 🧠 Undo Breakpoints
 
-| Keybinding  | Mode | Description         |
-| ----------- | ---- | ------------------- |
-| `,` `.` `;` | i    | Add Undo Breakpoint |
+| Keybinding  | Mode | Description      |
+| ----------- | ---- | ---------------- |
+| `,` `.` `;` | i    | Adds undo points |
 
-### Save
+### 💾 Save
 
 | Keybinding | Mode(s)    | Description |
 | ---------- | ---------- | ----------- |
 | `<C-s>`    | i, x, n, s | Save File   |
 
-### Commenting
+### 💬 Commenting
 
-| Keybinding | Mode | Description       |
-| ---------- | ---- | ----------------- |
-| `gco`      | n    | Add Comment Below |
-| `gcO`      | n    | Add Comment Above |
+| Keybinding | Mode | Description        |
+| ---------- | ---- | ------------------ |
+| `gco`      | n    | Comment Below Line |
+| `gcO`      | n    | Comment Above Line |
 
-### Quit
+### 🪟 Window Split
 
-| Keybinding   | Mode | Description |
-| ------------ | ---- | ----------- |
-| `<leader>qq` | n    | Quit All    |
+| Keybinding   | Mode | Description   |
+| ------------ | ---- | ------------- |
+| `<leader>-`  | n    | Split Below   |
+| `<leader>dw` | n    | Delete Window |
 
-### Window Management
+### 🧘 Zen Mode
 
-| Keybinding   | Mode | Description        |
-| ------------ | ---- | ------------------ | ------------------ |
-| `<leader>-`  | n    | Split Window Below |
-| `<leader>    | `    | n                  | Split Window Right |
-| `<leader>wd` | n    | Delete Window      |
+| Keybinding   | Mode | Description    |
+| ------------ | ---- | -------------- |
+| `<leader>zz` | n    | Toggle ZenMode |
 
-### Zen Mode
+### 🖥️ Terminal
 
-| Keybinding   | Mode | Description     |
-| ------------ | ---- | --------------- |
-| `<leader>zz` | n    | Toggle Zen Mode |
+| Keybinding   | Mode | Description                |
+| ------------ | ---- | -------------------------- |
+| `<leader>tt` | n    | Toggle Terminal            |
+| `<leader>tf` | n    | Toggle Float Terminal      |
+| `<leader>th` | n    | Toggle Horizontal Terminal |
+| `<leader>tv` | n    | Toggle Vertical Terminal   |
+| `<C-x>`      | t    | Escape Terminal Mode       |
 
-### Terminal
+### 🧑‍⚕️ Diagnostics
 
-| Keybinding               | Mode | Description                |
-| ------------------------ | ---- | -------------------------- |
-| `<leader>tt`             | n    | Toggle Terminal            |
-| `<leader>tf`             | n    | Toggle Floating Terminal   |
-| `<leader>th`             | n    | Toggle Horizontal Terminal |
-| `<leader>tv`             | n    | Toggle Vertical Terminal   |
-| `<C-Up/Down/Left/Right>` | t    | Resize in Terminal Mode    |
-| `<C-x>`                  | t    | Escape Terminal Mode       |
+| Keybinding   | Mode | Description               |
+| ------------ | ---- | ------------------------- |
+| `<leader>ld` | n    | Toggle Inline Diagnostics |
 
-### Line Number Toggle
+### 🧭 Center Screen Scroll
 
-| Keybinding   | Mode | Description         |
-| ------------ | ---- | ------------------- |
-| `<leader>tn` | n    | Toggle Line Numbers |
+| Keybinding | Mode | Description               |
+| ---------- | ---- | ------------------------- |
+| `<C-d>`    | n    | Scroll Half Down & Center |
+| `<C-u>`    | n    | Scroll Half Up & Center   |
 
-### Clipboard Operations
+### 🐙 Git
 
-| Keybinding   | Mode(s) | Description                   |
-| ------------ | ------- | ----------------------------- |
-| `<leader>y`  | n, v    | Yank to System Clipboard      |
-| `<leader>yy` | n       | Yank Line to System Clipboard |
-| `<leader>p`  | n, v    | Paste from System Clipboard   |
-| `<leader>P`  | n, v    | Paste Before from Clipboard   |
+| Keybinding   | Mode | Description                  |
+| ------------ | ---- | ---------------------------- |
+| `<leader>gp` | n    | Preview Git Hunk (Gitsigns)  |
+| `<leader>gb` | n    | Toggle Line Blame (Gitsigns) |
 
-### Diagnostics
+### 🧬 LSP
 
-| Keybinding   | Mode | Description                    |
-| ------------ | ---- | ------------------------------ |
-| `<leader>dt` | n    | Toggle Diagnostic Virtual Text |
+| Keybinding   | Mode(s) | Description         |
+| ------------ | ------- | ------------------- |
+| `K`          | n       | Hover Documentation |
+| `gd`         | n       | Go to Definition    |
+| `<leader>ca` | n, v    | Code Action         |
+
+### 🔖 Marks
+
+| Keybinding   | Mode | Description      |
+| ------------ | ---- | ---------------- |
+| `<leader>m`  | n    | Telescope Marks  |
+| `<leader>dm` | n    | Delete All Marks |
+
+### 📋 Clipboard
+
+| Keybinding   | Mode(s) | Description                        |
+| ------------ | ------- | ---------------------------------- |
+| `<leader>y`  | n, v    | Yank to system clipboard           |
+| `<leader>yy` | n       | Yank line to system clipboard      |
+| `<leader>p`  | n, v    | Paste from system clipboard        |
+| `<leader>P`  | n, v    | Paste before from system clipboard |
+
+---
+
+### 🧩 Default Keymaps for `nvim-surround`
+
+| Keybinding         | Mode | Description                 |
+| ------------------ | ---- | --------------------------- |
+| `ys<motion><char>` | n    | Add surround to text object |
+| `yss<char>`        | n    | Surround current line       |
+| `yS<char>`         | n    | Surround line (alternative) |
+| `ds<char>`         | n    | Delete surrounding          |
+| `cs<old><new>`     | n    | Change surrounding          |
+| `S<char>`          | v    | Surround visual selection   |
+
+📘 Ref: [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround)
+
+---
+
+### 🧩 Default Keymaps for `nvim-ufo`
+
+| Keybinding | Mode | Description                    |
+| ---------- | ---- | ------------------------------ |
+| `zR`       | n    | Open all folds                 |
+| `zM`       | n    | Close all folds                |
+| `zr`       | n    | Open one level of folds        |
+| `zm`       | n    | Close one level of folds       |
+| `zK`       | n    | Peek folded lines under cursor |
+
+📘 Ref: [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)
 
 </details>
 
@@ -204,8 +247,15 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 
 ##### 30 May:
 
-- After playing around a lot, I have added [harpoon][./lua/plugins/harpoon.lua] and `marks.nvim` (in same the file) for better file navigation |
-- I have added [indent-blankline][./lua/plugins/indent-blankline.lua] to show indentation lines | And `nvim-ufo` for better code folding (both in the `indent-blankline.lua` file
+- After playing around a lot, I have added [harpoon](./lua/plugins/harpoon.lua) and `marks.nvim` (in same the file) for better file navigation |
+- I have added [indent-blankline](./lua/plugins/indent-blankline.lua) to show indentation lines | And `nvim-ufo` for better code folding (both in the `indent-blankline.lua` file
+
+##### 1 June:
+
+- Added themery and some themes to allow switching
+- Experimented with bufferline but meh I don't think I need it
+- Set up [nvim-surround](./lua/plugins/nvim-surround.lua) | Now I can surround text, lines or words with parentheses, quotations and more
+-
 
 #### Notes for specific plugins
 
@@ -214,11 +264,12 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 #### TODO
 
 - [ ] Actually learn to use neovim
-- [ ] Set up Which-Key properly
+- [x] Set up Which-Key properly
 - [x] DAP: Set up and learn debugging
 - [x] Option to open config dir on homepage
-- [ ] Set up folding (maybe nvim-ufo?)
-- [ ] Learn macros
+- [x] Set up folding (maybe nvim-ufo?)
+- [ ] Set up [flash.nvim](https://github.com/folke/flash.nvim)
+- [ ] Learn macros, learn how to use `treesitter-textobjects`
 
 # Learning vim: Notes
 
