@@ -363,3 +363,12 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 - `v-i-b`: Select inside of `()` | `v-i-B`: Select inside of `{}` | To include the brackets: use `a` instead of `i`
 
 - `i`: Inside | `a`: all | `b`: braces | `c`: change
+
+##### Vim Text Objects
+
+- I'm only listing the basic ones I think are super cool
+- `f` is the function object picker | So `v-i-f` will change in the function | `c-a-f` will change around the function
+- `c` is the class object picker | So `v-i-f` will select stuff inside the class
+- To scroll by functions: Press `]-m` to go forward and `[-m` to go backward
+- To go to end of functions (the above one goes to the start: Replace `m` with `M`
+  For classes, replace `m` with `]` and `M` with [
