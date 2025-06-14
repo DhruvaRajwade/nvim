@@ -84,11 +84,20 @@ return {
 					documentation = {
 						window = {
 							border = nil,
+							winblend = 15,
 							scrollbar = false,
 							winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
 						},
 						auto_show = true,
 						auto_show_delay_ms = 500,
+					},
+
+					signature = {
+						enabled = true,
+						window = {
+							border = "rounded",
+							winblend = 15,
+						},
 					},
 				},
 			})

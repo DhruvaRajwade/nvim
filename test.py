@@ -41,4 +41,5 @@ class ded_2:
         self.ded2 = ded2
 
 
-is_prime(5)
+if __name__ == "__main__":
+    is_prime(5)

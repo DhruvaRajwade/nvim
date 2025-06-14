@@ -150,3 +150,12 @@ end, { desc = "Previous todo comment" })
 map("n", "]t", function()
 	require("todo-comments").jump_next({ keywords = { "ERROR", "WARNING" } })
 end, { desc = "Next error/warning todo comment" })
+
+--toggle bufferline
+map("n", "<leader>bt", function()
+	if vim.o.showtabline == 1 then
+		vim.o.showtabline = 2
+	else
+		vim.o.showtabline = 1
+	end
+end, { desc = "Toggle barbar.nvim tabline" })
