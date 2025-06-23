@@ -18,6 +18,14 @@ vim.g.mapleader = " "
 -- Enable true color support in the terminal
 vim.opt.termguicolors = true
 
+-- Enable relative line numbers
+vim.wo.number = true
+vim.wo.relativenumber = true
+
+--Better search
+vim.opt.ignorecase = true -- search case insensitive
+vim.opt.smartcase = true -- search matters if capital letter
+
 -- Set the path to the Python interpreter for Neovim plugins
 vim.g.python3_host_prog = "/home/stormageddon/.pyenv/versions/neovim-env/bin/python"
 

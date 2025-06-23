@@ -269,7 +269,7 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 - [x] Option to open config dir on homepage
 - [x] Set up folding (maybe nvim-ufo?)
 - [ ] Set up [flash.nvim](https://github.com/folke/flash.nvim)
-- [ ] Learn macros, learn how to use `treesitter-textobjects`
+- [x] Learn macros, learn how to use `treesitter-textobjects`
 
 # Learning vim: Notes
 
@@ -371,4 +371,13 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 - `c` is the class object picker | So `v-i-f` will select stuff inside the class
 - To scroll by functions: Press `]-m` to go forward and `[-m` to go backward
 - To go to end of functions (the above one goes to the start: Replace `m` with `M`
-  For classes, replace `m` with `]` and `M` with [
+- For classes, replace `m` with `]` and `M` with [
+
+##### Exercises (Random)
+
+- To add a TODO or a HACK, use the comment+<space> + label (e.g.: -- HACK)
+- Vim-Surround: `ys`: Indicates yank-s (as just `s` would mean substitute)
+- Vim-Surround: So `ys<motion><delimiter>` would be the way
+- Vim-Surround: `cs<target><new>` will change delimiter surrounding cursor
+- `<leader>td` is set to toggle todo-list
+-

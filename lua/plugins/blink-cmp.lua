@@ -68,10 +68,12 @@ return {
 					},
 				},
 				completion = {
+					accept = { auto_brackets = { enabled = true } },
 					menu = {
 						border = nil,
 						scrolloff = 1,
 						scrollbar = false,
+						winblend = 15,
 						draw = {
 							columns = {
 								{ "kind_icon" },
@@ -92,13 +94,13 @@ return {
 						auto_show_delay_ms = 500,
 					},
 
-					signature = {
-						enabled = true,
-						window = {
-							border = "rounded",
-							winblend = 15,
-						},
-					},
+					-- signature = {
+					-- 	enabled = true,
+					-- 	window = {
+					-- 		border = "rounded",
+					-- 		winblend = 15,
+					-- 	},
+					-- },
 				},
 			})
 

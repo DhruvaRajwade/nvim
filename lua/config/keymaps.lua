@@ -27,6 +27,10 @@ map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
 map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
+-- Indent without leaving visual mode
+vim.keymap.set("v", "<", "<gv", { desc = "Stay in visual mode during outdent" })
+vim.keymap.set("v", ">", ">gv", { desc = "Stay in visual mode during indent" })
+
 -- Move Lines
 map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
 map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
@@ -129,6 +133,7 @@ map("n", "<leader><F5>", vim.cmd.UndotreeToggle)
 
 map("n", "K", vim.lsp.buf.hover, {})
 map("n", "gd", vim.lsp.buf.definition, {})
+map("n", "<leader>rn", vim.lsp.buf.rename, {})
 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 --marks

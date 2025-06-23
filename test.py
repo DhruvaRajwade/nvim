@@ -36,6 +36,17 @@ class ded:
         print(self.age)
 
 
+#
+# list = [
+#     a,
+#     b,
+#     c,
+#     d,
+#     e,
+# ]
+#
+
+
 class ded_2:
     def __init__(self, ded2):
         self.ded2 = ded2
@@ -43,3 +54,5 @@ class ded_2:
 
 if __name__ == "__main__":
     is_prime(5)
+
+# TODO: testing
