@@ -5,11 +5,15 @@ return {
 		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
-				suggestion = { enabled = false },
+				suggestion = {
+					enabled = false, -- Disabled by default
+					auto_trigger = true, -- Auto-trigger ready when enabled
+				},
 				panel = { enabled = false },
 			})
 		end,
 	},
+
 	{
 		"giuxtaposition/blink-cmp-copilot",
 	},
