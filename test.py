@@ -52,6 +52,10 @@ class ded_2:
         self.ded2 = ded2
 
 
+def add_nums(a: int, b: int, c: int) -> int:
+    return a + b + c
+
+
 if __name__ == "__main__":
     is_prime(5)
 
