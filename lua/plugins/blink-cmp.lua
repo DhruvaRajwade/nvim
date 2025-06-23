@@ -41,6 +41,8 @@ return {
 		"saghen/blink.cmp",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		version = "1.*",
+		lazy = true,
+		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
 			require("blink.cmp").setup({
 				snippets = { preset = "luasnip" },

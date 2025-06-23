@@ -1,5 +1,6 @@
 return {
 	"mfussenegger/nvim-dap",
+	ft = { "python" },
 	dependencies = {
 		-- Creates a beautiful debugger UI
 		"rcarriga/nvim-dap-ui",

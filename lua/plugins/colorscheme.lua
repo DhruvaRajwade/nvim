@@ -3,7 +3,7 @@ return {
 	{
 
 		"zaldih/themery.nvim",
-		lazy = false,
+		cmd = { "Themery" },
 		config = function()
 			require("themery").setup({
 
@@ -279,6 +279,7 @@ return {
 	-- onedark
 	{
 		"navarasu/onedark.nvim",
+		lazy = true,
 		priority = 1000,
 		config = function()
 			require("onedark").setup({
@@ -310,7 +311,7 @@ return {
 	-- nord (does not support Lua-based integration options natively)
 	{
 		"shaunsingh/nord.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		config = function()
 			vim.cmd("colorscheme nord")
@@ -320,7 +321,7 @@ return {
 	-- nightfox
 	{
 		"EdenEast/nightfox.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		opts = {
 			options = {
@@ -362,7 +363,7 @@ return {
 	-- kanagawa
 	{
 		"rebelot/kanagawa.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		opts = {
 			theme = "wave",

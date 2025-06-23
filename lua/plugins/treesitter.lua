@@ -32,6 +32,7 @@ return {
 	{
 
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		lazy = true,
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "lua", "python", "javascript", "markdown", "bash" }, -- your choice

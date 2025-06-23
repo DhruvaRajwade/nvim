@@ -18,6 +18,7 @@ return {
 	-- 2. Mason-LSPConfig.nvim setup - This is the core of your LSP server configuration
 	{
 		"williamboman/mason-lspconfig.nvim",
+		event = { "BufReadPre", "BufNewFile" }, -- triggers LSP setup on editing
 		dependencies = {
 			"neovim/nvim-lspconfig", -- lspconfig is a direct dependency
 			"williamboman/mason.nvim",
