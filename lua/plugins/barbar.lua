@@ -25,7 +25,6 @@ return {
 		end,
 		config = function()
 			require("barbar").setup({
-				-- WARN: do not copy everything below into your config!
 				--       It is just an example of what configuration options there are.
 				--       The defaults are suitable for most people.
 

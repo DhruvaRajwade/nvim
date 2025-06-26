@@ -39,7 +39,7 @@ return {
 					{
 						icon = "🧠  ",
 						desc = "Tinker With The Config",
-						action = "Neotree dir=~/.config/nvim",
+						action = "cd ~/.config/nvim | Oil .",
 						key = "c",
 					},
 					{ icon = "🛑  ", desc = "Quit Neovim", action = "qa", key = "q" },
