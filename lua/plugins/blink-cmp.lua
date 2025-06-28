@@ -41,6 +41,8 @@ return {
 		"saghen/blink.cmp",
 		dependencies = { "rafamadriz/friendly-snippets", "giuxtaposition/blink-cmp-copilot" },
 		version = "1.*",
+		lazy = true,
+		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
 			require("blink.cmp").setup({
 				snippets = { preset = "luasnip" },

@@ -379,5 +379,6 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 - Vim-Surround: `ys`: Indicates yank-s (as just `s` would mean substitute)
 - Vim-Surround: So `ys<motion><delimiter>` would be the way
 - Vim-Surround: `cs<target><new>` will change delimiter surrounding cursor
+- Vim-Surround: In Visual mode, to surround a selection type `S<delimiter>`
 - `<leader>td` is set to toggle todo-list
 -

@@ -5,9 +5,26 @@ return {
 			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
 			"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
 		},
+		lazy = true,
+		init = function()
+			local au_id
+
+			local function load_barbar_if_needed()
+				local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+				if #buffers >= 2 then
+					require("lazy").load({ plugins = { "barbar.nvim" } })
+					if au_id then
+						vim.api.nvim_del_autocmd(au_id)
+					end
+				end
+			end
+
+			au_id = vim.api.nvim_create_autocmd("BufEnter", {
+				callback = load_barbar_if_needed,
+			})
+		end,
 		config = function()
 			require("barbar").setup({
-				-- WARN: do not copy everything below into your config!
 				--       It is just an example of what configuration options there are.
 				--       The defaults are suitable for most people.
 
@@ -183,6 +200,8 @@ return {
 
 	{
 		"Bekaboo/dropbar.nvim",
+		ft = { "lua", "python", "cpp", "c", "rust", "go", "markdown" },
+		-- lazy = false,
 		-- optional, but required for fuzzy finder support
 		dependencies = {
 			"nvim-telescope/telescope-fzf-native.nvim",

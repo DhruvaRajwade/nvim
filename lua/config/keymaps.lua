@@ -164,3 +164,10 @@ map("n", "<leader>bt", function()
 		vim.o.showtabline = 1
 	end
 end, { desc = "Toggle barbar.nvim tabline" })
+
+--clear search register
+--
+vim.keymap.set("n", "<leader>cs", function()
+	vim.fn.setreg("/", "")
+	vim.opt.hlsearch = false
+end, { desc = "Clear last search and highlighting" })

@@ -13,13 +13,14 @@
 --   }
 return {
 
-  {
-    "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "saghen/blink.cmp" },
-    config = function()
-      require("render-markdown").setup({
-        completions = { blink = { enabled = true } },
-      })
-    end,
-  },
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown" },
+		dependencies = { "nvim-treesitter/nvim-treesitter", "saghen/blink.cmp" },
+		config = function()
+			require("render-markdown").setup({
+				completions = { blink = { enabled = true } },
+			})
+		end,
+	},
 }

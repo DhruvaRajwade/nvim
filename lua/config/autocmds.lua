@@ -88,6 +88,7 @@ autocmd("FileType", {
 	group = close_group,
 	pattern = {
 		"checkhealth",
+		"Oil",
 		"git",
 		"help",
 		"lspinfo",
@@ -131,17 +132,7 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	end,
 })
 
--- hide copilot in autocomplete menu
-autocmd("User", {
-	pattern = "BlinkCmpMenuOpen",
-	callback = function()
-		vim.b.copilot_suggestion_hidden = true
-	end,
-})
-
-autocmd("User", {
-	pattern = "BlinkCmpMenuClose",
-	callback = function()
-		vim.b.copilot_suggestion_hidden = false
-	end,
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	command = "silent! lcd %:p:h",
 })

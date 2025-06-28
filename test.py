@@ -44,7 +44,6 @@ class ded:
 #     d,
 #     e,
 # ]
-#
 
 
 class ded_2:
@@ -58,5 +57,6 @@ def add_nums(a: int, b: int, c: int) -> int:
 
 if __name__ == "__main__":
     is_prime(5)
+
 
 # TODO: testing
