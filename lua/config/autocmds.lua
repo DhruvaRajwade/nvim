@@ -131,8 +131,3 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 		end, 50)
 	end,
 })
-
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "*",
-	command = "silent! lcd %:p:h",
-})
