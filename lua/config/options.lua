@@ -12,6 +12,8 @@ vim.cmd("set shiftwidth=2")
 -- Set the leader key to space
 vim.g.mapleader = " "
 
+vim.opt.splitright = true
+
 -- Set colorscheme to 'catppuccin'
 --vim.cmd.colorscheme("catppuccin")
 
