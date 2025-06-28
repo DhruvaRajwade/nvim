@@ -44,7 +44,6 @@ class ded:
 #     d,
 #     e,
 # ]
-#
 
 
 class ded_2:
@@ -54,5 +53,6 @@ class ded_2:
 
 if __name__ == "__main__":
     is_prime(5)
+
 
 # TODO: testing

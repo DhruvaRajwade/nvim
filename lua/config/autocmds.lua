@@ -88,6 +88,7 @@ autocmd("FileType", {
 	group = close_group,
 	pattern = {
 		"checkhealth",
+		"Oil",
 		"git",
 		"help",
 		"lspinfo",
@@ -129,4 +130,9 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 			vim.cmd.checktime()
 		end, 50)
 	end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	command = "silent! lcd %:p:h",
 })
