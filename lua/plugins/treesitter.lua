@@ -32,7 +32,8 @@ return {
 	{
 
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		lazy = true,
+		lazy = false,
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "lua", "python", "javascript", "markdown", "bash" }, -- your choice
