@@ -74,7 +74,6 @@ return {
 					layout = "vertical", -- makes the window appear beside the current one
 					width = 0.2, -- adjust width: 0.4 = 40% of total editor width
 					height = 0.95, -- optional: almost full height
-					position = "right", -- set to right side
 				},
 
 				show_help = true, -- Shows help message as virtual lines when waiting for user input
@@ -225,6 +224,7 @@ return {
 					vim.opt_local.conceallevel = 0
 				end,
 			})
+			vim.keymap.set("n", "<leader>zt", "<cmd>CopilotChatToggle<cr>", { desc = "Toggle Copilot Chat" })
 		end,
 		-- See Commands section for default commands if you want to lazy load on them
 	},

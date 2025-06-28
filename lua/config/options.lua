@@ -22,6 +22,7 @@ vim.opt.termguicolors = true
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+vim.opt.splitright = true
 --Better search
 vim.opt.ignorecase = true -- search case insensitive
 vim.opt.smartcase = true -- search matters if capital letter
