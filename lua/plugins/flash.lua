@@ -13,9 +13,6 @@ return {
     { "<c-a>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
 		config = function()
-<<<<<<< HEAD
-			require("flash").setup()
-=======
 			require("flash").setup({
 				modes = {
 					-- Enable enhanced search (`/`, `?`)
@@ -64,7 +61,6 @@ return {
 					},
 				},
 			})
->>>>>>> main
 		end,
 	},
 }
