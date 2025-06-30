@@ -29,7 +29,7 @@ def is_prime(n: int):
 
 
 class ded:
-    def __init__(self, age):
+    def _init__(self, age):
         self.age = age
 
     def report_age(self):
