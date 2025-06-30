@@ -13,7 +13,54 @@ return {
     { "<c-a>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
 		config = function()
-			require("flash").setup()
+			require("flash").setup({
+				modes = {
+					-- Enable enhanced search (`/`, `?`)
+					search = {
+						enabled = true,
+						highlight = { backdrop = false },
+						jump = { autojump = false },
+					},
+					-- Enable single-character motions (`f`, `F`, `t`, `T`)
+					char = {
+						enabled = true,
+						highlight = { backdrop = true },
+						jump = { autojump = true },
+					},
+					-- Jump between windows
+					remote = {
+						enabled = true,
+						highlight = { backdrop = true },
+						jump = { autojump = false },
+					},
+					-- Use Treesitter for structural navigation
+					treesitter = {
+						enabled = true,
+						highlight = {
+							label = {
+								before = true,
+								after = true,
+								style = "inline",
+							},
+							backdrop = true,
+						},
+						jump = { autojump = false },
+					},
+					-- LSP integration (e.g., go to reference)
+					lsp = {
+						enabled = true,
+						highlight = {
+							label = {
+								before = true,
+								after = true,
+								style = "eol",
+							},
+							backdrop = true,
+						},
+						jump = { autojump = false },
+					},
+				},
+			})
 		end,
 	},
 }
