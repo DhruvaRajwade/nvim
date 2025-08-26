@@ -41,7 +41,7 @@ return {
 			end
 
 			mason_lspconfig.setup({
-				ensure_installed = { "lua_ls", "vimls", "pylsp", "ruff", "marksman" },
+				ensure_installed = { "lua_ls", "vimls", "pylsp", "ruff", "marksman", "yamlls" },
 
 				handlers = {
 					-- Default handler for any server not explicitly listed below

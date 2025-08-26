@@ -1,38 +1,3 @@
--- return {
---
--- 	{ "L3MON4D3/LuaSnip", keys = {} },
---
--- 	{
--- 		"saghen/blink.cmp",
--- 		dependencies = { "rafamadriz/friendly-snippets" },
--- 		version = "1.*",
---
--- 		opts = {
--- 			keymap = { preset = "default" },
---
--- 			appearance = {
--- 				nerd_font_variant = "mono",
--- 			},
---
--- 			completion = {
--- 				documentation = { auto_show = true, auto_show_delay_ms = 500, update_delay_ms = 50 },
--- 			},
---
--- 			sources = {
--- 				default = { "lsp", "path", "snippets", "buffer" },
--- 			},
--- 			cmdline = {
--- 				keymap = { preset = "inherit" },
--- 				completion = { menu = { auto_show = true } },
--- 			},
---
--- 			fuzzy = { implementation = "prefer_rust_with_warning" },
--- 		},
---
--- 		opts_extend = { "sources.default" },
--- 	},
--- }
---
 return {
 
 	{ "L3MON4D3/LuaSnip", keys = {} },
@@ -73,7 +38,13 @@ return {
 					},
 				},
 				keymap = {
-					["<C-f>"] = {},
+					-- ["<CR>"] = { "accept", "fallback" },
+					["<C-\\>"] = { "hide", "fallback" },
+					["<C-n>"] = { "select_next", "show" },
+					["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+					["<C-p>"] = { "select_prev" },
+					["<C-b>"] = { "scroll_documentation_up", "fallback" },
+					["<C-f>"] = { "scroll_documentation_down", "fallback" },
 				},
 				cmdline = {
 					enabled = true,

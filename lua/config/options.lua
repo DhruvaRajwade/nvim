@@ -14,9 +14,6 @@ vim.g.mapleader = " "
 
 vim.opt.splitright = true
 
--- Set colorscheme to 'catppuccin'
---vim.cmd.colorscheme("catppuccin")
-
 -- Enable true color support in the terminal
 vim.opt.termguicolors = true
 
@@ -30,28 +27,28 @@ vim.opt.ignorecase = true -- search case insensitive
 vim.opt.smartcase = true -- search matters if capital letter
 
 -- Set the path to the Python interpreter for Neovim plugins
-vim.g.python3_host_prog = "/home/stormageddon/.pyenv/versions/neovim-env/bin/python"
+vim.g.python3_host_prog = "~/.pyenv/versions/neovim-env/bin/python"
 
 -- Configure LSP settings for Python using 'pylsp' language server
-vim.lsp.config("pylsp", {
-	cmd = { "pylsp" },
-	filetypes = { "python" },
-	root_markers = { ".git" }, -- Detect root using presence of .git directory
-	settings = {
-		pylsp = {
-			plugins = {
-				pycodestyle = { enabled = false }, -- disable pycodestyle
-				pyflakes = { enabled = false }, -- disable pyflakes
-				pylint = { enabled = false }, -- disable pylint
-				mccabe = { enabled = false }, -- disable complexity checker
-				black = { enabled = false }, -- disable Black formatter
-				yapf = { enabled = false }, -- disable Yapf formatter
-				isort = { enabled = false }, -- disable import sorter
-				autopep8 = { enabled = false }, -- disable autopep8
-			},
-		},
-	},
-})
+-- vim.lsp.config("pylsp", {
+-- 	cmd = { "pylsp" },
+-- 	filetypes = { "python" },
+-- 	root_markers = { ".git" }, -- Detect root using presence of .git directory
+-- 	settings = {
+-- 		pylsp = {
+-- 			plugins = {
+-- 				pycodestyle = { enabled = false }, -- disable pycodestyle
+-- 				pyflakes = { enabled = false }, -- disable pyflakes
+-- 				pylint = { enabled = false }, -- disable pylint
+-- 				mccabe = { enabled = false }, -- disable complexity checker
+-- 				black = { enabled = false }, -- disable Black formatter
+-- 				yapf = { enabled = false }, -- disable Yapf formatter
+-- 				isort = { enabled = false }, -- disable import sorter
+-- 				autopep8 = { enabled = false }, -- disable autopep8
+-- 			},
+-- 		},
+-- 	},
+-- })
 -- Disable loading of certain built-in Vim plugins to improve startup time
 local disabled_built_ins = {
 	"netrw",

@@ -136,3 +136,93 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 -- 	pattern = "*",
 -- 	command = "silent! lcd %:p:h",
 -- })
+vim.api.nvim_create_user_command("Daily", function()
+	local log_dir = vim.fn.expand("~/mes_trebuches/logs")
+	local template = vim.fn.expand("~/.config/nvim/snippets/markdown/daily.md")
+	local today = os.date("%Y-%m-%d")
+	local file = log_dir .. "/" .. today .. ".md"
+
+	vim.fn.mkdir(log_dir, "p")
+
+	if vim.fn.filereadable(file) == 0 then
+		local lines = {}
+		local tmpl = io.open(template, "r")
+		if tmpl then
+			for line in tmpl:lines() do
+				lines[#lines + 1] = line:gsub("{{DATE}}", today)
+			end
+			tmpl:close()
+		end
+
+		local f = io.open(file, "w")
+		for _, l in ipairs(lines) do
+			f:write(l .. "\n")
+		end
+		f:close()
+
+		local yesterday = os.date("%Y-%m-%d", os.time() - 24 * 60 * 60)
+		local last_file = log_dir .. "/" .. yesterday .. ".md"
+		if vim.fn.filereadable(last_file) == 1 then
+			local unfinished = {}
+			for line in io.lines(last_file) do
+				if line:match("^%- %[ %]") then
+					unfinished[#unfinished + 1] = line .. " (from [" .. yesterday .. "](" .. yesterday .. ".md))"
+				end
+			end
+			if #unfinished > 0 then
+				local buf = {}
+				for line in io.lines(file) do
+					if line:match("^## Notes") then
+						buf[#buf + 1] = "## Carried from Yesterday\n"
+						for _, t in ipairs(unfinished) do
+							buf[#buf + 1] = t
+						end
+						buf[#buf + 1] = ""
+					end
+					buf[#buf + 1] = line
+				end
+				local f2 = io.open(file, "w")
+				for _, l in ipairs(buf) do
+					f2:write(l .. "\n")
+				end
+				f2:close()
+			end
+		end
+	end
+
+	vim.cmd("edit " .. file)
+end, {})
+
+vim.api.nvim_create_user_command("WordAdd", function(opts)
+	local word = opts.args
+	local log_dir = vim.fn.expand("~/mes_trebuches/words")
+	local file = log_dir .. "/" .. word .. ".md"
+
+	-- Ensure directory exists
+	vim.fn.mkdir(log_dir, "p")
+
+	-- If file doesn't exist, create with template
+	if vim.fn.filereadable(file) == 0 then
+		local lines = {
+			"# " .. word,
+			"",
+			"**Definition:**  ",
+			"",
+			"**Links:**  ",
+			"- [Dictionary.com](https://www.dictionary.com/browse/" .. word .. ")",
+			"- [Merriam-Webster](https://www.merriam-webster.com/dictionary/" .. word .. ")",
+			"- [Biology Online](https://www.biologyonline.com/dictionary/" .. word .. ")",
+			"",
+			"**See also:**  ",
+			"- ",
+		}
+		local f = io.open(file, "w")
+		for _, l in ipairs(lines) do
+			f:write(l .. "\n")
+		end
+		f:close()
+	end
+
+	-- Open the file in current buffer
+	vim.cmd("edit " .. file)
+end, { nargs = 1 })
