@@ -137,7 +137,7 @@ autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 -- 	command = "silent! lcd %:p:h",
 -- })
 vim.api.nvim_create_user_command("Daily", function()
-	local log_dir = vim.fn.expand("~/mes_trebuches/logs")
+	local log_dir = vim.fn.expand("~/Documents/mes_trebuches/logs")
 	local template = vim.fn.expand("~/.config/nvim/snippets/markdown/daily.md")
 	local today = os.date("%Y-%m-%d")
 	local file = log_dir .. "/" .. today .. ".md"
@@ -195,7 +195,7 @@ end, {})
 
 vim.api.nvim_create_user_command("WordAdd", function(opts)
 	local word = opts.args
-	local log_dir = vim.fn.expand("~/mes_trebuches/words")
+	local log_dir = vim.fn.expand("~/Documents/mes_trebuches/words")
 	local file = log_dir .. "/" .. word .. ".md"
 
 	-- Ensure directory exists
