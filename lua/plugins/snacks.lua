@@ -17,7 +17,7 @@ return {
 		})
 
 		return {
-			image = { enabled = true },
+			image = { enabled = false },
 			bigfile = { enabled = true },
 			lazygit = { enabled = true },
 			zen = {
