@@ -22,26 +22,19 @@ return {
 		dependencies = {
 			"neovim/nvim-lspconfig", -- lspconfig is a direct dependency
 			"williamboman/mason.nvim",
-			-- No need for blink.cmp as a direct dependency here if you're not configuring it.
-			-- No need for lspkind.nvim here if you're not using it for LSP completion icons in this file.
-			-- No need for ray-x/lsp_signature.nvim here if you're not configuring it in this file.
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
 			local mason_lspconfig = require("mason-lspconfig")
 
-			-- We no longer call blink.cmp.get_lsp_capabilities() here,
-			-- as blink.cmp will handle its own capabilities.
-			-- Use nvim-lspconfig's default capabilities which are suitable for most scenarios.
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-			-- Default on_attach function with common LSP keymaps
 			local on_attach_default = function(client, bufnr)
 				vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 			end
 
 			mason_lspconfig.setup({
-				ensure_installed = { "lua_ls", "vimls", "pylsp", "ruff", "marksman", "yamlls" },
+				ensure_installed = { "lua_ls", "vimls", "pylsp", "ruff", "yamlls" }, --marksman", "yamlls" },
 
 				handlers = {
 					-- Default handler for any server not explicitly listed below
@@ -121,10 +114,47 @@ return {
 							on_attach = on_attach_default,
 						})
 					end,
+
+					-- marksman = function()
+					-- 	lspconfig.marksman.setup({
+					-- 		capabilities = capabilities,
+					-- 		on_attach = on_attach_default,
+					-- 		filetypes = { "markdown", "markdown.mdx" },
+					-- 		root_dir = lspconfig.util.root_pattern(
+					-- 			".git",
+					-- 			".marksman.toml",
+					-- 			".marksman.yaml",
+					-- 			".marksman.yml"
+					-- 		) or vim.loop.cwd(),
+					-- 	})
+					-- end,
+					-- texlab = function()
+					-- 	require("lspconfig").texlab.setup({
+					-- 		capabilities = capabilities,
+					-- 		on_attach = on_attach_default,
+					-- 		filetypes = { "tex", "plaintex", "markdown" },
+					-- 		settings = {
+					-- 			texlab = {
+					-- 				auxDirectory = ".",
+					-- 				bibtexFormatter = "texlab",
+					-- 				build = {
+					-- 					executable = "latexmk",
+					-- 					args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+					-- 					forwardSearchAfter = false,
+					-- 					onSave = false,
+					-- 				},
+					-- 				chktex = { onOpenAndSave = false, onEdit = false },
+					-- 				diagnosticsDelay = 300,
+					-- 				latexFormatter = "latexindent",
+					-- 				latexindent = { ["local"] = nil, modifyLineBreaks = false },
+					-- 			},
+					-- 		},
+					-- 	})
+					-- end,
 				},
 			})
-			--
 
+			--
 			vim.diagnostic.config({
 				virtual_lines = true,
 				-- virtual_text = true,

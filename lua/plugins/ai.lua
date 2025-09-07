@@ -11,6 +11,10 @@ return {
 					auto_trigger = true, -- Auto-trigger ready when enabled
 				},
 				panel = { enabled = false },
+				filetypes = {
+					yaml = true,
+					markdown = true,
+				},
 			})
 		end,
 	},

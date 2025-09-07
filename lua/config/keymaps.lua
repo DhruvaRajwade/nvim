@@ -46,6 +46,7 @@ map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+-- This will make the behaviour of n and N consistent while cycling through forward or reverse searches
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
 map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
 map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
@@ -71,14 +72,14 @@ map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>dw", "<C-W>c", { desc = "Delete Window", remap = true })
 
 --zen mode
-map("n", "<leader>zz", "<cmd>ZenMode<CR>", { desc = "Toggle ZenMode" })
+-- map("n", "<leader>zz", "<cmd>Snacks.zen()<CR>", { desc = "Toggle ZenMode" })
 
--- Terminal keymaps
-map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle Terminal" })
-map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle Floating Terminal" })
-map("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "Toggle Horizontal Terminal" })
-map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Toggle Vertical Terminal" })
-
+-- -- Terminal keymaps
+-- map("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle Terminal" })
+-- map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle Floating Terminal" })
+-- map("n", "<leader>th", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "Toggle Horizontal Terminal" })
+-- map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Toggle Vertical Terminal" })
+--
 -- Terminal mode resizing
 map("t", "<C-Up>", "<C-\\><C-n>:resize -2<CR>i", { desc = "Resize window up" })
 map("t", "<C-Down>", "<C-\\><C-n>:resize +2<CR>i", { desc = "Resize window down" })
@@ -93,7 +94,6 @@ map("n", "<leader>ln", function()
 end, { desc = "Toggle Line Numbers" })
 
 -- Easier copypasta from system clipboard
-
 -- Yank selected text to system clipboard
 map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank to system clipboard" })
 
@@ -133,12 +133,12 @@ map("n", "<leader><F5>", vim.cmd.UndotreeToggle)
 
 map("n", "K", vim.lsp.buf.hover, {})
 map("n", "gd", vim.lsp.buf.definition, {})
-map("n", "<leader>rn", vim.lsp.buf.rename, {})
+-- map("n", "<leader>rn", vim.lsp.buf.rename, {})
 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 --marks
 
-map("n", "<leader>m", "<cmd>Telescope marks<CR>", { desc = "Telescope marks" })
+-- map("n", "<leader>m", "<cmd>Telescope marks<CR>", { desc = "Telescope marks" })
 map("n", "<leader>dm", ':delm! | delm A-Z0-9"<>[]`<CR>', { noremap = true, silent = true })
 
 --todo

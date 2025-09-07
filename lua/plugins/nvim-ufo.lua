@@ -1,25 +1,5 @@
 return {
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("ibl").setup({
-				indent = {
-					char = "│", -- Set indent line character
-				},
-				scope = {
-					enabled = true, -- Enable scope highlighting
-					show_start = true,
-					show_end = false,
-				},
-				exclude = {
-					filetypes = { "help", "terminal", "dashboard" }, -- Exclude these filetypes
-					buftypes = { "terminal", "nofile" },
-				},
-			})
-		end,
-	},
-
-	{
 		"kevinhwang91/nvim-ufo",
 		event = "BufReadPost",
 		dependencies = { "kevinhwang91/promise-async" },

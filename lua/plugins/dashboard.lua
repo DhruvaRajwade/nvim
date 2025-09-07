@@ -28,14 +28,25 @@ return {
 				},
 
 				center = {
-					{ icon = "🚀  ", desc = "Find Deez Files", action = "Telescope find_files", key = "f" },
+					{
+						icon = "🚀  ",
+						desc = "Find Deez Files",
+						action = [[lua require("snacks.picker").files()]],
+						key = "f",
+					},
 					{
 						icon = "💾  ",
 						desc = "Restore Previous Sessions",
-						action = "Telescope session-lens search_session",
+						action = [[lua require("persistence").select()]],
+						-- action = "Telescope session-lens search_session",
 						key = "s",
 					},
-					{ icon = "📄  ", desc = "Recent Nuts", action = "Telescope oldfiles", key = "r" },
+					{
+						icon = "📄  ",
+						desc = "Recent Nuts",
+						action = [[lua require("snacks.picker").recent()]],
+						key = "r",
+					},
 					{
 						icon = "🧠  ",
 						desc = "Tinker With The Config",

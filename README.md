@@ -381,4 +381,9 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 - Vim-Surround: `cs<target><new>` will change delimiter surrounding cursor
 - Vim-Surround: In Visual mode, to surround a selection type `S<delimiter>`
 - `<leader>td` is set to toggle todo-list
--
+
+### 4 Sept 2025: Tried integrating snacks.nvim
+
+- For remote systems disable the scrolling for snacks, and get the neoscroll.lua file out of the archive
+- For remote systems, do the same for the indent-blankline plugin, and disable indent and scroll from snacks
+- For remote: Don't need vimtex, markdown and img-clip stuff

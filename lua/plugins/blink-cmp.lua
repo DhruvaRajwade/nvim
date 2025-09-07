@@ -9,6 +9,7 @@ return {
 		lazy = true,
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
+			require("luasnip").filetype_extend("markdown", { "tex" })
 			require("blink.cmp").setup({
 				snippets = { preset = "luasnip" },
 				signature = { enabled = true },
@@ -18,6 +19,9 @@ return {
 				},
 				sources = {
 					default = { "lsp", "path", "snippets", "buffer", "copilot" },
+					per_filetype = {
+						markdown = { "path", "snippets", "buffer", "copilot" },
+					},
 					providers = {
 						cmdline = {
 							min_keyword_length = 2,

@@ -82,7 +82,7 @@ return {
 				lualine_y = {},
 				lualine_z = { "location" },
 			},
-			extensions = { "toggleterm", "trouble" },
+			extensions = { "trouble" },
 		})
 	end,
 }
