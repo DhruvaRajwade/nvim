@@ -20,6 +20,7 @@ vim.opt.termguicolors = true
 -- Enable relative line numbers
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.g.clipboard = "osc52"
 
 vim.opt.splitright = true
 --Better search

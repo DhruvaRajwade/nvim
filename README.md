@@ -387,3 +387,20 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 - For remote systems disable the scrolling for snacks, and get the neoscroll.lua file out of the archive
 - For remote systems, do the same for the indent-blankline plugin, and disable indent and scroll from snacks
 - For remote: Don't need vimtex, markdown and img-clip stuff
+
+1. CLONE CONFIG
+2. DOWNLOAD nvim appimage from [official](https://github.com/neovim/neovim/releases)
+3. ADD ALIAS TO .zshrc as: `alias nvim="$HOME/.config/nvim/nvim-linux-x86_64.appimage"`
+4. Don't forget to `chmod+x nvim_appimage`
+5. Random: Do Copilot auth for copilot sign in
+
+Treesitter might give some issues for installing stuff, its fine as long as we have what we want
+
+Checkhealth output: TODOs:
+rg
+lynx
+gh
+
+Copilot: Requires Node.js
+
+Will need to install prettier, yamlfmt, stylua
