@@ -32,24 +32,6 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 
 ---
 
-## 📁 Directory Structure
-
-```text
-~/.config/nvim/
-├── init.lua                 # Main entry point
-├── lua/
-│   ├── options.lua          # Basic settings
-│   ├── keymaps.lua          # Custom keybindings
-│   ├── autocmd.lua          # Autocommands
-│   ├── config/
-│   │   └── lazy.lua         # Lazy.nvim plugin manager setup
-│   └── plugins/             # Plugin specifications
-│
-│
-└── README.md
-
-```
-
 <details>
 <summary><strong>📜 A map of Keymaps</strong></summary>
 
@@ -92,10 +74,10 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 
 ### 🔃 Move Lines
 
-| Keybinding | Mode(s) | Description |
-| ---------- | ------- | ----------- |
-| `<A-j>`    | n, i, v | Move Down   |
-| `<A-k>`    | n, i, v | Move Up     |
+| Keybinding | Mode(s) | Description          |
+| ---------- | ------- | -------------------- |
+| `<A-j>`    | n, i, v | Move Down (A is alt) |
+| `<A-k>`    | n, i, v | Move Up              |
 
 ### 📁 Buffers
 
@@ -132,10 +114,11 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 
 ### 🪟 Window Split
 
-| Keybinding   | Mode | Description   |
-| ------------ | ---- | ------------- |
-| `<leader>-`  | n    | Split Below   |
-| `<leader>dw` | n    | Delete Window |
+| Keybinding   | Mode | Description        |
+| ------------ | ---- | ------------------ |
+| `<leader>\|` | n    | Split horizontally |
+| `<leader>-`  | n    | Split Below        |
+| `<leader>dw` | n    | Delete Window      |
 
 ### 🧘 Zen Mode
 
@@ -185,7 +168,6 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 
 | Keybinding   | Mode | Description      |
 | ------------ | ---- | ---------------- |
-| `<leader>m`  | n    | Telescope Marks  |
 | `<leader>dm` | n    | Delete All Marks |
 
 ### 📋 Clipboard
@@ -196,21 +178,6 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 | `<leader>yy` | n       | Yank line to system clipboard      |
 | `<leader>p`  | n, v    | Paste from system clipboard        |
 | `<leader>P`  | n, v    | Paste before from system clipboard |
-
----
-
-### 🧩 Default Keymaps for `nvim-surround`
-
-| Keybinding         | Mode | Description                 |
-| ------------------ | ---- | --------------------------- |
-| `ys<motion><char>` | n    | Add surround to text object |
-| `yss<char>`        | n    | Surround current line       |
-| `yS<char>`         | n    | Surround line (alternative) |
-| `ds<char>`         | n    | Delete surrounding          |
-| `cs<old><new>`     | n    | Change surrounding          |
-| `S<char>`          | v    | Surround visual selection   |
-
-📘 Ref: [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround)
 
 ---
 
@@ -268,7 +235,7 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 - [x] DAP: Set up and learn debugging
 - [x] Option to open config dir on homepage
 - [x] Set up folding (maybe nvim-ufo?)
-- [ ] Set up [flash.nvim](https://github.com/folke/flash.nvim)
+- [x] Set up [flash.nvim](https://github.com/folke/flash.nvim)
 - [x] Learn macros, learn how to use `treesitter-textobjects`
 
 # Learning vim: Notes

@@ -1,5 +1,4 @@
 local map = vim.keymap.set
-
 --yanky
 map({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
 map({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
