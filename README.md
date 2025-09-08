@@ -1,14 +1,16 @@
-This is an effort to make installing neovim and getting the accompanying config up and running. I assume that the user won't have sudo access (or prefers not to install stuff globally). I usually avoid conda like the plague but in this case, conda (or rather mamba) is a godsend, making the install of general useful stuff pretty convenient.
+This is an effort to make installing neovim smooth, and getting the accompanying config up and running. I assume that the user won't have sudo access (or prefers not to install stuff globally). I usually avoid conda like the plague but in this case, conda (or rather mamba) is a godsend, making the installation of general useful stuff pretty convenient.
 
-1. CLONE CONFIG
-2. DOWNLOAD nvim appimage from [official](https://github.com/neovim/neovim/releases)
+#### Nvim
+
+1. `git clone https://github.com/DhruvaRajwade/nvim.git`, and `git checkout -b remote` inside the repo directory
+2. DOWNLOAD nvim appimage from [official release page](https://github.com/neovim/neovim/releases)
 3. If the appimage does not work, download the tarball `nvim-linux-x86_64.tar.gz`,
    run `tar xzvf nvim-linux-x86_64.tar.gz` and run `./nvim-linux-x86_64/bin/nvim` to open nvim
-4. Don't forget to `chmod+x nvim_appimage`
-5. ADD ALIAS TO .zshrc as: `alias nvim="$HOME/.config/nvim/nvim-linux-x86_64.appimage"`
-   MAKE SURE: INSTALL THE CONDA ENV FIRST USING `install_deps.sh` and then and only then open neovim for the first time
-6. Random: Do `:Copilot auth` for copilot sign in
-7. Can add an alias that automatically activates the mamba/conda env whenever you open nvim like:
+   #NOTE: Don't forget to `chmod+x nvim_appimage`
+4. Add the nvim alias to .zshrc as: `alias nvim="$HOME/.config/nvim/nvim-linux-x86_64.appimage"`
+   #NOTE: INSTALL THE CONDA ENV FIRST USING `install_deps.sh` and then and only then open neovim for the first time
+5. Random: Run `:Copilot auth` for copilot sign in
+   #NOTE: Can add an alias that automatically activates the mamba/conda env whenever you open nvim like:
 
 ```bash
 unalias nvim 2>/dev/null
@@ -22,10 +24,12 @@ nvim() {
 
 ```
 
+---
+
 #### Setting up/configuring Tmux
 
-- Create a `.tmux.conf` file and `.tmux` directory
-- For Catppuccin, follow this:
+- Create a `.tmux.conf` file and a `.tmux` directory
+- For the catppuccin bar and theme, follow this:
 
 ```bash
 mkdir -p ~/.config/tmux/plugins/catppuccin
@@ -37,9 +41,13 @@ git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugin
 
 - Inside tmux, hit `<prefix>I` to install all plugins and reload the config, and this should be it!
 
+---
+
 #### Installing UV
 
 `curl -LsSf https://astral.sh/uv/install.sh | sh` should do the trick
+
+---
 
 #### Setting up starship
 
@@ -47,8 +55,10 @@ git clone -b v2.1.3 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugin
 
 `eval "$(starship init zsh)"` should be added in your `.zshrc`
 
-the `starship.toml` file works out of the box, it should be placed inside `~/.config/starship/`
+The `starship.toml` file works out of the box, it should be placed inside `~/.config/starship/`
 #NOTE: A NerdFont must be installed for starship to work
+
+---
 
 #### Setting up zsh
 
@@ -101,3 +111,5 @@ done
 
 echo "All plugins installed in $PLUGIN_DIR"
 ```
+
+---
