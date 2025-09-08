@@ -191,16 +191,16 @@ return {
 				end,
 				desc = "Git Log (Current File)",
 			},
-
+			{
+				"<leader>st",
+				function()
+					snacks.picker.todo_comments()
+				end,
+				desc = "Todo",
+			},
 			vim.api.nvim_create_user_command("Theme", function(opts)
 				snacks.picker.colorschemes(opts)
 			end, { nargs = "?" }),
-			vim.api.nvim_create_user_command("Todos", function()
-				require("snacks.picker").grep({
-					search = [[TODO:|todo!\(.*\)]],
-					no_esc = true,
-				})
-			end, { desc = "Grep TODOs", nargs = 0 }),
 		}
 	end,
 }

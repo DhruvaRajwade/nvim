@@ -12,20 +12,20 @@ conda activate $ENV_NAME
 
 # Install Neovim + tooling (force a full NodeJS build with npm bundled)
 mamba install -y -c conda-forge \
-    neovim \
-    "nodejs>=20,<21" \
-    ripgrep \
-    lynx \
-    gh \
-    fd-find \
-    lazygit \
-    pynvim \
+  neovim \
+  "nodejs>=20,<21" \
+  ripgrep \
+  lynx \
+  gh \
+  fd-find \
+  lazygit \
+  pynvim
 
 # Symlink fd to fdfind
-FD_PATH=$(which fdfind || true)
-if [ -n "$FD_PATH" ]; then
-    ln -sf "$FD_PATH" "$(dirname $FD_PATH)/fd"
-fi
+# FD_PATH=$(which fdfind || true)
+# if [ -n "$FD_PATH" ]; then
+#     ln -sf "$FD_PATH" "$(dirname $FD_PATH)/fd"
+# fi
 
 # Verify installs
 echo "=== Installed versions in $ENV_NAME ==="
@@ -40,4 +40,3 @@ lazygit --version
 lynx --version
 
 echo "✅ Setup complete! Run: conda activate $ENV_NAME"
-
