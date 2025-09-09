@@ -10,16 +10,14 @@ mamba create -y -n $ENV_NAME python=3.10
 eval "$(conda shell.bash hook)"
 conda activate $ENV_NAME
 
-# Install Neovim + tooling (force a full NodeJS build with npm bundled)
 mamba install -y -c conda-forge \
-  neovim \
-  "nodejs>=20,<21" \
+  nodejs \
   ripgrep \
   lynx \
   gh \
   fd-find \
   lazygit \
-  pynvim
+  pynvim # neovim \
 
 # Symlink fd to fdfind
 # FD_PATH=$(which fdfind || true)
@@ -29,7 +27,6 @@ mamba install -y -c conda-forge \
 
 # Verify installs
 echo "=== Installed versions in $ENV_NAME ==="
-nvim --version | head -n 1
 python -c "import neovim; print('pynvim:', neovim.__version__)"
 node --version
 npm --version
@@ -39,4 +36,4 @@ gh --version
 lazygit --version
 lynx --version
 
-echo "✅ Setup complete! Run: conda activate $ENV_NAME"
+echo "Setup complete! Run: conda activate $ENV_NAME"

@@ -1,4 +1,4 @@
-This is an effort to make installing neovim smooth, and getting the accompanying config up and running. I assume that the user won't have sudo access (or prefers not to install stuff globally). I usually avoid conda like the plague but in this case, conda (or rather mamba) is a godsend, making the installation of general useful stuff pretty convenient.
+This is an effort to make installing neovim smooth, and getting the accompanying config up and running. I assume that the user won't have sudo access (or prefers not to install stuff globally). I usually avoid conda like the plague but in this case, conda (or rather mamba) is a godsend, making the installation of generally useful stuff pretty convenient.
 
 #### Nvim
 
