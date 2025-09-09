@@ -1,12 +1,9 @@
 ---@type vim.lsp.Config
 return {
-	cmd = { "ruff", "server" }, -- `--preview` enables LSP mode
+	cmd = { "ruff", "server" },
 	filetypes = { "python" },
 	root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "ruff.toml", ".git" }, { upward = true })[1]),
 	init_options = {
-		settings = {
-			-- Optional: override settings here, usually not required
-			-- args = { "--select", "F401" }, -- for example
-		},
+		settings = {},
 	},
 }

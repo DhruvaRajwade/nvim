@@ -8,7 +8,5 @@ return {
 	cmd = { "marksman" },
 	filetypes = { "markdown" },
 	root_markers = { ".git", ".marksman.toml" },
-	settings = {
-		-- marksman currently has no custom LSP settings to configure
-	},
+	settings = {},
 }

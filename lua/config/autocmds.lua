@@ -4,8 +4,6 @@ local close_group = vim.api.nvim_create_augroup("q_close", { clear = true })
 -- Create a general group to avoid duplicate autocmds on reload
 local general = augroup("General", { clear = true })
 
---show diagnostics on cursor hold
-
 vim.o.updatetime = 250
 
 local function close_or_quit()
@@ -21,13 +19,7 @@ local function close_or_quit()
 	end
 end
 
--- autocmd("CursorHold", {
---   callback = function()
---     vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
---   end,
--- })
---
--- Make shell scripts executable on save
+-- Make shell scripts executable on save #NOTE: Treat with caution
 autocmd("BufWritePost", {
 	group = vim.api.nvim_create_augroup("MakeExecutable", { clear = true }),
 	pattern = "*.sh",

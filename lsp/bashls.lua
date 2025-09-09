@@ -1,3 +1,4 @@
+-- https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lsp/bashls.lua
 -- Install with: npm i -g bash-language-server
 -- Also uses shellcheck for diagnostics and shfmt for formatting.
 

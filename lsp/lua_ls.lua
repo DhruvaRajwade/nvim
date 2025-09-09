@@ -1,3 +1,4 @@
+-- https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lsp/lua_ls.lua
 -- Install with
 -- mac: brew install lua-language-server
 -- Arch: pacman -S lua-language-server
