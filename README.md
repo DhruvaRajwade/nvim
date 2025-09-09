@@ -4,6 +4,7 @@
 
 Here’s a rundown of the main plugins I use in this config and what role each plays in my workflow:
 
+- **[snacks](https://github.com/Folke/snacks.nvim)** - Indentation guides, bigfile support, zenmode, my picker of choice and much more
 - **[blink.cmp](https://github.com/Saghen/blink.cmp)** – I've added Copilot as a source here, instead of `ghost` in-line suggestions
 
 - **[nvim-autopairs](https://github.com/windwp/nvim-autopairs)** – Autocompletes an assortment of parantheses
