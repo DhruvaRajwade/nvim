@@ -3,8 +3,8 @@ This is an effort to make installing neovim smooth, and getting the accompanying
 #### Nvim
 
 1. `git clone https://github.com/DhruvaRajwade/nvim.git`, and `git checkout -b remote` inside the repo directory
-2. DOWNLOAD nvim appimage from [official release page](https://github.com/neovim/neovim/releases)
-3. If the appimage does not work, download the tarball `nvim-linux-x86_64.tar.gz`,
+2. Download the nvim appimage from the [official release page](https://github.com/neovim/neovim/releases)
+3. If the appimage does not run properly due to incompatible glibc versions, download the tarball `nvim-linux-x86_64.tar.gz`,
    run `tar xzvf nvim-linux-x86_64.tar.gz` and run `./nvim-linux-x86_64/bin/nvim` to open nvim
    #NOTE: Don't forget to `chmod+x nvim_appimage`
 4. Add the nvim alias to .zshrc as: `alias nvim="$HOME/.config/nvim/nvim-linux-x86_64.appimage"`
