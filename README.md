@@ -1,232 +1,32 @@
-<!--toc:start-->
+## This is a mainly python-focused config, with a slightly different version in the remote branch, meant for remote systems (such as ancient slurm servers) with no sudo access
 
-- [📝 Deez Nuts](#📝-deez-nuts)
-  - [📁 Directory Structure](#📁-directory-structure)
-    - [Yanky Keymaps](#yanky-keymaps)
-    - [Better Up/Down Movement](#better-updown-movement)
-    - [Window Navigation](#window-navigation)
-    - [Window Resizing](#window-resizing)
-    - [Move Lines](#move-lines)
-    - [Buffers](#buffers)
-    - [Search Enhancements (saner n/N)](#search-enhancements-saner-nn)
-    - [Undo Breakpoints](#undo-breakpoints)
-    - [Save](#save)
-    - [Commenting](#commenting)
-    - [Quit](#quit)
-    - [Window Management](#window-management)
-    - [Zen Mode](#zen-mode)
-    - [Terminal](#terminal)
-    - [Line Number Toggle](#line-number-toggle)
-    - [Clipboard Operations](#clipboard-operations)
-    - [Diagnostics](#diagnostics)
-      - [Notes about changes (with dates)](#notes-about-changes-with-dates)
-        - [30 May:](#30-may)
-      - [Notes for specific plugins](#notes-for-specific-plugins)
-      - [TODO](#todo)
-- [Learning vim: Notes](#learning-vim-notes) - [General Stuff](#general-stuff) - [Navigation](#navigation) - [Actions](#actions) - [Horizontal Motions](#horizontal-motions) - [Vertical Motions](#vertical-motions) - [Searching](#searching) - [Advanced Motions](#advanced-motions)
-<!--toc:end-->
+## Plugins Overview
 
-# 📝 Deez Nuts
+Here’s a rundown of the main plugins I use in this config and what role each plays in my workflow:
 
-Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management. The configuration is modular and organized for clarity and scalability.
+- **[blink.cmp](https://github.com/Saghen/blink.cmp)** – I've added Copilot as a source here, instead of `ghost` in-line suggestions
 
----
+- **[nvim-autopairs](https://github.com/windwp/nvim-autopairs)** – Autocompletes an assortment of parantheses
 
-<details>
-<summary><strong>📜 A map of Keymaps</strong></summary>
+- **[barbar.nvim](https://github.com/romgrk/barbar.nvim)** - The status bar (bottom)
 
-### 🔁 Yanky Keymaps
+- **[conform.nvim](https://github.com/stevearc/conform.nvim)** – For code formatting
 
-| Keybinding | Mode(s) | Description          |
-| ---------- | ------- | -------------------- |
-| `p`        | n, x    | Yanky Put After      |
-| `P`        | n, x    | Yanky Put Before     |
-| `gp`       | n, x    | Yanky GPut After     |
-| `gP`       | n, x    | Yanky GPut Before    |
-| `<C-p>`    | n       | Yanky Previous Entry |
-| `<C-n>`    | n       | Yanky Next Entry     |
+- **[flash.nvim](https://github.com/folke/flash.nvim)** – Makes moving around text way faster.
 
-### ⬇️ Better Up/Down Movement
+- **[img-clip.nvim](https://github.com/HakonHarnes/img-clip.nvim)** – I often need to drop screenshots or figures into Markdown/notes. This plugin lets me just paste from the clipboard and it handles saving and linking the image. Zero friction.
 
-| Keybinding    | Mode(s) | Description           |
-| ------------- | ------- | --------------------- |
-| `j`, `<Down>` | n, x    | Down (gj if no count) |
-| `k`, `<Up>`   | n, x    | Up (gk if no count)   |
+- **[nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)** Folding code
 
-### 🪟 Window Navigation
+- **[oil.nvim](https://github.com/stevearc/oil.nvim)** – Files as a buffer
 
-| Keybinding | Mode | Description        |
-| ---------- | ---- | ------------------ |
-| `<C-h>`    | n    | Go to Left Window  |
-| `<C-j>`    | n    | Go to Lower Window |
-| `<C-k>`    | n    | Go to Upper Window |
-| `<C-l>`    | n    | Go to Right Window |
+- **[persistence.nvim](https://github.com/folke/persistence.nvim)** – Session management
 
-### 🪟 Window Resizing
+- **[trouble.nvim](https://github.com/folke/trouble.nvim)** – Organized reasons why your code might suck
 
-| Keybinding    | Mode | Description          |
-| ------------- | ---- | -------------------- |
-| `<C-Up>`      | n    | Increase Height      |
-| `<C-Down>`    | n    | Decrease Height      |
-| `<C-Left>`    | n    | Decrease Width       |
-| `<C-Right>`   | n    | Increase Width       |
-| `<C-Up/Down>` | t    | Resize from terminal |
+- **[yanky.nvim](https://github.com/gbprod/yanky.nvim)** - Better yanking and yeeting
 
-### 🔃 Move Lines
-
-| Keybinding | Mode(s) | Description          |
-| ---------- | ------- | -------------------- |
-| `<A-j>`    | n, i, v | Move Down (A is alt) |
-| `<A-k>`    | n, i, v | Move Up              |
-
-### 📁 Buffers
-
-| Keybinding                 | Mode | Description            |
-| -------------------------- | ---- | ---------------------- |
-| `<S-h>`                    | n    | Previous Buffer        |
-| `]b`                       | n    | Next Buffer            |
-| `<leader>bb`, `<leader>\`` | n    | Switch to Other Buffer |
-
-### 🔎 Search Enhancements
-
-| Keybinding | Mode(s) | Description              |
-| ---------- | ------- | ------------------------ |
-| `n`, `N`   | n, x, o | Smarter next/prev result |
-
-### 🧠 Undo Breakpoints
-
-| Keybinding  | Mode | Description      |
-| ----------- | ---- | ---------------- |
-| `,` `.` `;` | i    | Adds undo points |
-
-### 💾 Save
-
-| Keybinding | Mode(s)    | Description |
-| ---------- | ---------- | ----------- |
-| `<C-s>`    | i, x, n, s | Save File   |
-
-### 💬 Commenting
-
-| Keybinding | Mode | Description        |
-| ---------- | ---- | ------------------ |
-| `gco`      | n    | Comment Below Line |
-| `gcO`      | n    | Comment Above Line |
-
-### 🪟 Window Split
-
-| Keybinding   | Mode | Description        |
-| ------------ | ---- | ------------------ |
-| `<leader>\|` | n    | Split horizontally |
-| `<leader>-`  | n    | Split Below        |
-| `<leader>dw` | n    | Delete Window      |
-
-### 🧘 Zen Mode
-
-| Keybinding   | Mode | Description    |
-| ------------ | ---- | -------------- |
-| `<leader>zz` | n    | Toggle ZenMode |
-
-### 🖥️ Terminal
-
-| Keybinding   | Mode | Description                |
-| ------------ | ---- | -------------------------- |
-| `<leader>tt` | n    | Toggle Terminal            |
-| `<leader>tf` | n    | Toggle Float Terminal      |
-| `<leader>th` | n    | Toggle Horizontal Terminal |
-| `<leader>tv` | n    | Toggle Vertical Terminal   |
-| `<C-x>`      | t    | Escape Terminal Mode       |
-
-### 🧑‍⚕️ Diagnostics
-
-| Keybinding   | Mode | Description               |
-| ------------ | ---- | ------------------------- |
-| `<leader>ld` | n    | Toggle Inline Diagnostics |
-
-### 🧭 Center Screen Scroll
-
-| Keybinding | Mode | Description               |
-| ---------- | ---- | ------------------------- |
-| `<C-d>`    | n    | Scroll Half Down & Center |
-| `<C-u>`    | n    | Scroll Half Up & Center   |
-
-### 🐙 Git
-
-| Keybinding   | Mode | Description                  |
-| ------------ | ---- | ---------------------------- |
-| `<leader>gp` | n    | Preview Git Hunk (Gitsigns)  |
-| `<leader>gb` | n    | Toggle Line Blame (Gitsigns) |
-
-### 🧬 LSP
-
-| Keybinding   | Mode(s) | Description         |
-| ------------ | ------- | ------------------- |
-| `K`          | n       | Hover Documentation |
-| `gd`         | n       | Go to Definition    |
-| `<leader>ca` | n, v    | Code Action         |
-
-### 🔖 Marks
-
-| Keybinding   | Mode | Description      |
-| ------------ | ---- | ---------------- |
-| `<leader>dm` | n    | Delete All Marks |
-
-### 📋 Clipboard
-
-| Keybinding   | Mode(s) | Description                        |
-| ------------ | ------- | ---------------------------------- |
-| `<leader>y`  | n, v    | Yank to system clipboard           |
-| `<leader>yy` | n       | Yank line to system clipboard      |
-| `<leader>p`  | n, v    | Paste from system clipboard        |
-| `<leader>P`  | n, v    | Paste before from system clipboard |
-
----
-
-### 🧩 Default Keymaps for `nvim-ufo`
-
-| Keybinding | Mode | Description                    |
-| ---------- | ---- | ------------------------------ |
-| `zR`       | n    | Open all folds                 |
-| `zM`       | n    | Close all folds                |
-| `zr`       | n    | Open one level of folds        |
-| `zm`       | n    | Close one level of folds       |
-| `zK`       | n    | Peek folded lines under cursor |
-
-📘 Ref: [kevinhwang91/nvim-ufo](https://github.com/kevinhwang91/nvim-ufo)
-
-</details>
-
-<details>
-<summary><strong>📜 A map of Autocmds</strong></summary>
-
-| Trigger Event(s)          | Pattern/FileType          | Description                              |
-| ------------------------- | ------------------------- | ---------------------------------------- |
-| `CursorHold`              | `*`                       | Show diagnostics in a floating window    |
-| `BufWritePost`            | `*.sh`                    | Make shell scripts executable after save |
-| `TextYankPost`            | `*`                       | Briefly highlight yanked text            |
-| `BufWritePre`             | `*`                       | Remove trailing whitespace before save   |
-| `FocusGained`, `BufEnter` | `*`                       | Auto-reload file if changed externally   |
-| `BufReadPost`             | `*`                       | Restore last known cursor position       |
-| `FileType`                | `gitcommit`,`text`, `tex` | Enable spell check and line wrapping     |
-
-</details>
-
-#### Notes about changes (with dates)
-
-##### 30 May:
-
-- After playing around a lot, I have added [harpoon](./lua/plugins/harpoon.lua) and `marks.nvim` (in same the file) for better file navigation |
-- I have added [indent-blankline](./lua/plugins/indent-blankline.lua) to show indentation lines | And `nvim-ufo` for better code folding (both in the `indent-blankline.lua` file
-
-##### 1 June:
-
-- Added themery and some themes to allow switching
-- Experimented with bufferline but meh I don't think I need it
-- Set up [nvim-surround](./lua/plugins/nvim-surround.lua) | Now I can surround text, lines or words with parentheses, quotations and more
--
-
-#### Notes for specific plugins
-
-- About the vimtex plugin
+- #NOTE: Some extra stuff like debugging support can be found in the `lua/plugins/archive` directory (not enabled by default)
 
 #### TODO
 
@@ -348,9 +148,3 @@ Welcome to deez nuts! This setup is optimized for [MLDLGLRL] and uses [Lazy.nvim
 - Vim-Surround: `cs<target><new>` will change delimiter surrounding cursor
 - Vim-Surround: In Visual mode, to surround a selection type `S<delimiter>`
 - `<leader>td` is set to toggle todo-list
-
-### 4 Sept 2025: Tried integrating snacks.nvim
-
-- For remote systems disable the scrolling for snacks, and get the neoscroll.lua file out of the archive
-- For remote systems, do the same for the indent-blankline plugin, and disable indent and scroll from snacks
-- For remote: Don't need vimtex, markdown and img-clip stuff

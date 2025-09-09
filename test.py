@@ -1,3 +1,4 @@
+## This file serves as a test for evaluating LSP capabilities and miscellaneous functionalities.
 def is_prime(n: int):
     """
     # Checks if a given non-negative integer is a prime number.
