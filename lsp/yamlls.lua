@@ -1,4 +1,3 @@
--- https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lsp/yamlls.lua
 -- Install with: npm i -g add yaml-language-server
 
 ---@type vim.lsp.Config

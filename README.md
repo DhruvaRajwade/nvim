@@ -113,3 +113,14 @@ echo "All plugins installed in $PLUGIN_DIR"
 ```
 
 ---
+
+### A log of changes
+
+- 2.10.25: Added `sidekick.nvim` (to install gemini and copilot, use `npm` as below, and run `copilot` and `gemini` to log in)
+
+  ```bash
+  npm install -g @github/copilot
+  npm install -g @google/gemini-cli@latest
+
+
+  ```

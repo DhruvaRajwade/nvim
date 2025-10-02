@@ -1,4 +1,3 @@
--- https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lsp/lua_ls.lua
 -- Install with
 -- mac: brew install lua-language-server
 -- Arch: pacman -S lua-language-server
@@ -21,12 +20,19 @@ return {
 			runtime = {
 				version = "LuaJIT",
 			},
+			diagnostics = {
+				globals = { "vim" }, -- Fix "undefined global 'vim'"
+			},
 			workspace = {
 				checkThirdParty = false,
 				library = {
 					vim.env.VIMRUNTIME,
 					"${3rd}/luv/library",
+					vim.fn.stdpath("config") .. "/lua", -- For your Neovim config files
 				},
+			},
+			telemetry = {
+				enable = false,
 			},
 		},
 	},

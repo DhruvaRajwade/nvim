@@ -1,9 +1,0 @@
----@type vim.lsp.Config
-return {
-	cmd = { "ruff", "server" },
-	filetypes = { "python" },
-	root_dir = vim.fs.dirname(vim.fs.find({ "pyproject.toml", "ruff.toml", ".git" }, { upward = true })[1]),
-	init_options = {
-		settings = {},
-	},
-}
