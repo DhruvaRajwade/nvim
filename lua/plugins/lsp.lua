@@ -1,5 +1,4 @@
 return {
-	-- 1. Mason.nvim setup
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -15,17 +14,21 @@ return {
 		end,
 	},
 
-	-- 2. Mason-LSPConfig.nvim setup - This is the core of your LSP server configuration
 	{
-		"williamboman/mason-lspconfig.nvim",
-		event = { "BufReadPre", "BufNewFile" }, -- triggers LSP setup on editing
-		dependencies = {
-			"neovim/nvim-lspconfig", -- lspconfig is a direct dependency
-			"williamboman/mason.nvim",
-		},
+		"nvim-lsp-setup",
+		dir = vim.fn.stdpath("config"),
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			local lspconfig = require("lspconfig")
-			local mason_lspconfig = require("mason-lspconfig")
+			local config_path = vim.fn.stdpath("config") .. "/lsp"
+
+			local function load_lsp_config(server_name)
+				local config_file = config_path .. "/" .. server_name .. ".lua"
+				local ok, config = pcall(dofile, config_file)
+				if ok and config then
+					return config
+				end
+				return nil
+			end
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -33,131 +36,26 @@ return {
 				vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 			end
 
-			mason_lspconfig.setup({
-				ensure_installed = { "lua_ls", "vimls", "pylsp", "ruff", "yamlls" }, --marksman", "yamlls" },
+			local servers = { "html", "marksman", "lua_ls", "vim_ls", "pylsp", "ruff", "yamlls", "bashls", "texlab" }
 
-				handlers = {
-					-- Default handler for any server not explicitly listed below
-					function(server_name)
-						lspconfig[server_name].setup({
-							capabilities = capabilities,
-							on_attach = on_attach_default,
-						})
-					end,
+			for _, server_name in ipairs(servers) do
+				local config = load_lsp_config(server_name)
+				if config then
+					-- Merge with capabilities and on_attach
+					config.capabilities = config.capabilities or capabilities
+					config.on_attach = config.on_attach or on_attach_default
 
-					-- Specific configuration for lua_ls
-					lua_ls = function()
-						lspconfig.lua_ls.setup({
-							capabilities = capabilities,
-							on_attach = on_attach_default,
-							settings = {
-								Lua = {
-									workspace = {
-										checkThirdParty = false,
-										library = {
-											[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-											[vim.fn.stdpath("config") .. "/lua"] = true, -- For your Neovim config files
-										},
-									},
-									telemetry = {
-										enable = false,
-									},
-									diagnostics = {
-										globals = { "vim" }, -- Fix "undefined global 'vim'"
-									},
-								},
-							},
-						})
-					end,
-
-					-- Specific configuration for pylsp (no formatting/linting)
-					pylsp = function()
-						lspconfig.pylsp.setup({
-							capabilities = capabilities,
-							on_attach = on_attach_default, -- No custom on_attach needed just to disable formatting
-							settings = {
-								pylsp = {
-									plugins = {
-										-- Disable all linting/formatting plugins to avoid conflicts with Ruff/conform
-										autopep8 = { enabled = false },
-										black = { enabled = false },
-										yapf = { enabled = false },
-										flake8 = { enabled = false },
-										pylint = { enabled = false },
-										pycodestyle = { enabled = false },
-										mypy = { enabled = false },
-										pyflakes = { enabled = false },
-										mccabe = { enabled = false },
-										rope_autoimport = { enabled = false },
-										isort = { enabled = false },
-										pydocstyle = { enabled = false },
-										preload = { enabled = false }, -- optional
-										ruff = { enabled = false }, -- Ensure pylsp's ruff integration is off
-									},
-								},
-							},
-							-- Explicitly tell the server not to provide formatting capabilities
-							flags = {
-								allow_incremental_sync = true,
-								debounce_text_changes = 150,
-							},
-							handlers = {
-								["textDocument/formatting"] = function() end,
-								["textDocument/rangeFormatting"] = function() end,
-							},
-						})
-					end,
-
-					ruff = function()
-						lspconfig.ruff.setup({
-							capabilities = capabilities,
-							on_attach = on_attach_default,
-						})
-					end,
-
-					-- marksman = function()
-					-- 	lspconfig.marksman.setup({
+					vim.lsp.enable(server_name, config)
+					-- else
+					-- 	vim.lsp.enable(server_name, {
 					-- 		capabilities = capabilities,
 					-- 		on_attach = on_attach_default,
-					-- 		filetypes = { "markdown", "markdown.mdx" },
-					-- 		root_dir = lspconfig.util.root_pattern(
-					-- 			".git",
-					-- 			".marksman.toml",
-					-- 			".marksman.yaml",
-					-- 			".marksman.yml"
-					-- 		) or vim.loop.cwd(),
 					-- 	})
-					-- end,
-					-- texlab = function()
-					-- 	require("lspconfig").texlab.setup({
-					-- 		capabilities = capabilities,
-					-- 		on_attach = on_attach_default,
-					-- 		filetypes = { "tex", "plaintex", "markdown" },
-					-- 		settings = {
-					-- 			texlab = {
-					-- 				auxDirectory = ".",
-					-- 				bibtexFormatter = "texlab",
-					-- 				build = {
-					-- 					executable = "latexmk",
-					-- 					args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-					-- 					forwardSearchAfter = false,
-					-- 					onSave = false,
-					-- 				},
-					-- 				chktex = { onOpenAndSave = false, onEdit = false },
-					-- 				diagnosticsDelay = 300,
-					-- 				latexFormatter = "latexindent",
-					-- 				latexindent = { ["local"] = nil, modifyLineBreaks = false },
-					-- 			},
-					-- 		},
-					-- 	})
-					-- end,
-				},
-			})
+				end
+			end
 
-			--
 			vim.diagnostic.config({
 				virtual_lines = true,
-				-- virtual_text = true,
 				underline = true,
 				update_in_insert = false,
 				severity_sort = true,
@@ -178,26 +76,6 @@ return {
 					},
 				},
 			})
-			-- vim.diagnostic.config({
-			-- 	virtual_text = {
-			-- 		end_col = true,
-			-- 	},
-			-- 	signs = true,
-			-- 	update_in_insert = false,
-			-- 	underline = true,
-			-- 	severity_sort = true,
-			-- 	float = {
-			-- 		border = "rounded",
-			-- 		source = "always",
-			-- 		header = "",
-			-- 		prefix = "",
-			-- 	},
-			-- })
 		end,
-	},
-
-	{
-		"neovim/nvim-lspconfig",
-		lazy = false,
 	},
 }

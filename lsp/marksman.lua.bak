@@ -1,14 +1,10 @@
 -- Install with
 -- macOS: brew install marksman
--- Arch: pacman -S marksman
--- or: cargo install marksman
+-- Linux/Windows: download from https://github.com/artempyanykh/marksman/releases
 
 ---@type vim.lsp.Config
 return {
-	cmd = { "marksman" },
-	filetypes = { "markdown" },
-	root_markers = { ".git", ".marksman.toml" },
-	settings = {
-		-- marksman currently has no custom LSP settings to configure
-	},
+	cmd = { "marksman", "server" },
+	filetypes = { "markdown", "markdown.mdx" },
+	root_markers = { ".marksman.toml", ".git" },
 }

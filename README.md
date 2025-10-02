@@ -148,4 +148,3 @@ Here’s a rundown of the main plugins I use in this config and what role each p
 - Vim-Surround: So `ys<motion><delimiter>` would be the way
 - Vim-Surround: `cs<target><new>` will change delimiter surrounding cursor
 - Vim-Surround: In Visual mode, to surround a selection type `S<delimiter>`
-- `<leader>td` is set to toggle todo-list

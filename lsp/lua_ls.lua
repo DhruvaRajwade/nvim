@@ -20,12 +20,19 @@ return {
 			runtime = {
 				version = "LuaJIT",
 			},
+			diagnostics = {
+				globals = { "vim" }, -- Fix "undefined global 'vim'"
+			},
 			workspace = {
 				checkThirdParty = false,
 				library = {
 					vim.env.VIMRUNTIME,
 					"${3rd}/luv/library",
+					vim.fn.stdpath("config") .. "/lua", -- For your Neovim config files
 				},
+			},
+			telemetry = {
+				enable = false,
 			},
 		},
 	},
