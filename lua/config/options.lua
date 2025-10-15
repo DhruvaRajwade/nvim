@@ -26,7 +26,6 @@ vim.opt.splitright = true
 --Better search
 vim.opt.ignorecase = true -- search case insensitive
 vim.opt.smartcase = true -- search matters if capital letter
-vim.g.clipboard = "osc52"
 
 -- Set the path to the Python interpreter for Neovim plugins
 vim.g.python3_host_prog = "~/.pyenv/versions/neovim-env/bin/python"
