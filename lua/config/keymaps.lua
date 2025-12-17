@@ -128,7 +128,7 @@ map("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
 map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
 map("n", "<leader>gb", ":Gitsigns toggle_current_line_blame<CR>", {})
 --Undotree toggle
-map("n", "<leader><F5>", vim.cmd.UndotreeToggle)
+-- map("n", "<leader><F5>", vim.cmd.UndotreeToggle)
 
 map("n", "K", vim.lsp.buf.hover, {})
 map("n", "gd", vim.lsp.buf.definition, {})
