@@ -33,6 +33,7 @@ return {
 					end,
 				},
 
+				keymaps = { ["C-s"] = false, ["C-h"] = false, ["C-l"] = false },
 				preview_win = {
 					preview_split = "below",
 					-- Whether the preview window is automatically updated when the cursor is moved

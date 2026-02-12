@@ -34,29 +34,3 @@ class ded:
 
     def report_age(self):
         print(self.age)
-
-
-#
-# list = [
-#     a,
-#     b,
-#     c,
-#     d,
-#     e,
-# ]
-
-
-class ded_2:
-    def __init__(self, ded2):
-        self.ded2 = ded2
-
-
-def add_nums(a: int, b: int, c: int) -> int:
-    return a + b + c
-
-
-if __name__ == "__main__":
-    is_prime(5)
-
-
-# TODO: testing
