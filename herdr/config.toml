@@ -1,0 +1,201 @@
+onboarding = false
+# herdr configuration — mirrors ~/.tmux.conf
+# Validate:  herdr config check
+# Reload:    herdr server reload-config   (or prefix+r, see below)
+
+# ---------------------------------------------------------------------------
+# THEME — Catppuccin Frappé (matches @catppuccin_flavor "frappe")
+# ---------------------------------------------------------------------------
+# herdr's built-in "catppuccin" is the Mocha flavor, so the base theme is
+# repainted with the Frappé palette below. These are the only color tokens
+# herdr accepts; anything else is reported by `herdr config check`.
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[theme.custom]
+# "reset" = transparent, matching `set -g status-style bg=default`.
+# Swap for "#303446" (Frappé base) if you'd rather have an opaque panel.
+panel_bg    = "reset"
+
+surface_dim = "#292c3c"  # mantle
+surface0    = "#414559"
+surface1    = "#51576d"
+overlay0    = "#737994"
+overlay1    = "#838ba7"
+subtext0    = "#a5adce"
+text        = "#c6d0f5"
+
+accent      = "#ca9ee6"  # mauve — borders/highlights; try "#8caaee" (blue) instead
+mauve       = "#ca9ee6"
+blue        = "#8caaee"
+teal        = "#81c8be"
+green       = "#a6d189"
+yellow      = "#e5c890"
+peach       = "#ef9f76"
+red         = "#e78284"
+
+# ---------------------------------------------------------------------------
+# KEYS — tmux muscle memory
+# ---------------------------------------------------------------------------
+[keys]
+# set -g prefix C-q
+prefix = "ctrl+q"
+
+# Session / config
+detach        = "prefix+d"        # tmux: prefix d
+reload_config = "prefix+r"        # tmux: bind r source-file ~/.tmux.conf
+resize_mode   = "prefix+shift+r"  # displaced by reload_config above
+help          = "prefix+?"        # tmux: prefix ?
+
+# tmux prefix s = session picker; herdr's nearest equivalent is the workspace
+# picker, so settings moves off prefix+s to make room.
+workspace_picker = ["prefix+w", "prefix+s"]
+settings         = "prefix+shift+s"
+
+# Tabs == tmux windows (both 1-indexed, matching `base-index 1`)
+new_tab      = "prefix+c"
+rename_tab   = "prefix+comma"                        # tmux: prefix ,
+close_tab    = ["prefix+ampersand", "prefix+shift+x"] # tmux: prefix &
+previous_tab = "prefix+p"
+next_tab     = "prefix+n"
+switch_tab   = "prefix+1..9"
+
+# Panes
+split_vertical   = ["prefix+%", "prefix+v"]      # tmux: prefix % (left|right)
+split_horizontal = ['prefix+"', "prefix+minus"]  # tmux: prefix " (top/bottom)
+close_pane       = "prefix+x"
+zoom             = "prefix+z"
+copy_mode        = "prefix+["                    # tmux: prefix [
+rename_pane      = "prefix+shift+p"
+
+# bind-key h/j/k/l select-pane
+focus_pane_left  = "prefix+h"
+focus_pane_down  = "prefix+j"
+focus_pane_up    = "prefix+k"
+focus_pane_right = "prefix+l"
+
+cycle_pane_next     = ["prefix+tab", "prefix+o"]  # tmux: prefix o
+cycle_pane_previous = "prefix+shift+tab"
+last_pane           = "prefix+;"                  # tmux: prefix ;
+
+# Displaced by cycle_pane_next taking prefix+o
+open_notification_target = "prefix+shift+o"
+
+# bind b — toggle the status bar; herdr's sidebar is the analogue (already the default)
+toggle_sidebar = "prefix+b"
+
+# Bare C-h/j/k/l is handled by the vim-herdr-navigation plugin below, not by
+# focus_pane_* — the plugin hands off to nvim splits first, the way the
+# `is_vim` guard in ~/.tmux.conf does.
+
+# ---------------------------------------------------------------------------
+# PLUGIN KEYS
+# Installed with `herdr plugin install`; list them with `herdr plugin list`
+# and their action ids with `herdr plugin action list`.
+# ---------------------------------------------------------------------------
+
+# --- paulbkim-dev/vim-herdr-navigation  (== christoomey/vim-tmux-navigator) ---
+# nvim side lives at ~/.config/nvim/after/plugin/herdr_nav.lua
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"
+
+# --- iurysza/herdr-pane-layouts  (nearest thing to jabirali/tmux-tilish) ---
+[[keys.command]]
+key = "prefix+plus"
+type = "plugin_action"
+command = "layouts.cycle"
+description = "cycle layout: even-v, even-h, main-left, main-top, tiled"
+
+[[keys.command]]
+key = "prefix+="
+type = "plugin_action"
+command = "layouts.equalize"
+description = "equalize panes"
+
+# Resize pairs with focus_pane_* above: prefix+h moves, prefix+H resizes.
+[[keys.command]]
+key = "prefix+shift+h"
+type = "plugin_action"
+command = "layouts.resize-left"
+description = "resize pane left"
+
+[[keys.command]]
+key = "prefix+shift+j"
+type = "plugin_action"
+command = "layouts.resize-down"
+description = "resize pane down"
+
+[[keys.command]]
+key = "prefix+shift+k"
+type = "plugin_action"
+command = "layouts.resize-up"
+description = "resize pane up"
+
+[[keys.command]]
+key = "prefix+shift+l"
+type = "plugin_action"
+command = "layouts.resize-right"
+description = "resize pane right"
+
+# --- ntindle/herdr-resurrect  (== tmux-resurrect + tmux-continuum) ---
+# Same keys as tmux-resurrect's defaults.
+[[keys.command]]
+key = "prefix+ctrl+s"
+type = "plugin_action"
+command = "ntindle.herdr-resurrect.save"
+description = "resurrect: save snapshot"
+
+[[keys.command]]
+key = "prefix+ctrl+r"
+type = "plugin_action"
+command = "ntindle.herdr-resurrect.restore"
+description = "resurrect: restore last snapshot"
+
+[[keys.command]]
+key = "prefix+ctrl+p"
+type = "plugin_action"
+command = "ntindle.herdr-resurrect.restore-preview"
+description = "resurrect: preview restore (dry run)"
+
+[[keys.command]]
+key = "prefix+ctrl+l"
+type = "plugin_action"
+command = "ntindle.herdr-resurrect.snapshots"
+description = "resurrect: list snapshots"
+
+# ---------------------------------------------------------------------------
+# UI — set -g mouse on, set-clipboard on, mode-keys vi
+# ---------------------------------------------------------------------------
+[ui]
+mouse_capture  = true
+copy_on_select = true
+pane_borders   = true
+accent         = "#ca9ee6"
+
+# Navigate-mode movement is already h/j/k/l, matching `mode-keys vi`.
+
+agent_panel_sort = "priority"
+[experimental]
+pane_history = true
